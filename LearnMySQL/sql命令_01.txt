@@ -1,0 +1,19 @@
+CREATE TABLE customer(
+	name VARCHAR(20),
+	age INT,
+	height DOUBLE
+);
+
+
+INSERT INTO
+customer(name, age, height) 
+VALUES
+('张三', 19, 1.89);
+
+SELECT * FROM customer;
+
+
+INSERT INTO
+customer(name, age, height) 
+VALUES
+('李四', 29, 1.79);

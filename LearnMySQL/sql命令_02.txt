@@ -1,0 +1,67 @@
+CREATE TABLE user(
+	username VARCHAR(20) NOT NULL COMMENT '这是用户的姓名',
+	userpswd VARCHAR(20) NOT NULL COMMENT '这是用户的密码',
+	userage INT COMMENT DEFAULT 18 '这是用户的年龄'
+);
+
+INSERT INTO
+user
+(username, userpswd, userage)
+VALUES
+('刘鹏', "root", 21);
+
+INSERT INTO
+user
+(username, userpswd)
+VALUES
+('ruoyu', "admin");
+
+
+------------student----------------------
+| id  | name     | age  | birthday   | phone     | email            | intro
+-------------------------------------------
+
+
+
+CREATE TABLE dog(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	age INT,
+	color VARCHAR(15) DEFAULT 'black'
+);
+
+
+
+INSERT INTO
+dog
+(name, age)
+VALUES
+('小黑', 5);
+
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS company;
+
+CREATE TABLE company(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL UNIQUE,
+	address VARCHAR(20)
+);
+
+CREATE TABLE customer(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	age INT,
+	company_id INT,
+	FOREIGN KEY (company_id) REFERENCES company(id) COMMENT ON UPDATE CASCADE
+);
+
+INSERT INTO company(name, address) VALUES('阿里巴巴', '杭州');
+INSERT INTO company(name, address) VALUES('腾讯', '深圳');
+
+INSERT INTO customer(name, age, company_id) VALUES('张三', 22, 1);
+INSERT INTO customer(name, age, company_id) VALUES('李四', 12, 2);
+INSERT INTO customer(name, age, company_id) VALUES('王五', 23, 1);
+INSERT INTO customer(name, age, company_id) VALUES('赵六', 33, 2);
+INSERT INTO customer(name, age, company_id) VALUES('田七', 29, 1);
+
+UPDATE company SET id = 11 WHERE id = 1;

@@ -1,0 +1,65 @@
+USE DATABASE my_db;
+
+SELECT
+company.id, customer.company_id
+FROM
+company, customer;
+
+
+SELECT
+company.name company_name, company.id company_id, 
+customer.name customer_name, customer.company_id customer_company_id
+FROM
+company, customer;
+
+
+SELECT
+company.name company_name, company.id company_id, 
+customer.name customer_name, customer.company_id customer_company_id
+FROM
+company, customer
+WHERE
+company.id = customer.company_id;
+
+
+SELECT * FROM company, customer;
+
+--------------------------------------------------------------------------------------------------------
+
+# 76条数据
+SELECT
+ * 
+FROM 
+customer a, company b
+WHERE
+a.company_id = b.id;
+
+# 24
+SELECT
+ * 
+FROM 
+customer
+WHERE
+company_id IS NULL;
+
+# 76
+SELECT
+ * 
+FROM 
+customer
+WHERE
+company_id IS NOT NULL;
+
+SELECT
+ * 
+FROM 
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id;
+
+SELECT
+ * 
+FROM 
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id;

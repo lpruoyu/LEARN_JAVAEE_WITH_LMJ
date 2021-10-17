@@ -1,0 +1,148 @@
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id;
+
+SELECT
+*
+FROM
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id;
+
+
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id
+WHERE
+b.id IS NULL;
+
+
+SELECT
+*
+FROM
+customer
+WHERE
+company_id IS NULL;
+
+
+SELECT
+*
+FROM
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id
+WHERE
+a.company_id IS NULL;
+
+
+SELECT
+*
+FROM
+customer a JOIN company b
+ON
+a.company_id = b.id;
+
+
+# 全外连接
+(
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id
+)
+UNION
+(
+SELECT
+*
+FROM
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id
+);
+
+-----------------
+
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id
+
+UNION
+
+SELECT
+*
+FROM
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id
+;
+
+
+-----------------------------------------------------------
+
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id
+WHERE
+b.id IS NULL
+
+
+UNION
+
+
+SELECT
+*
+FROM
+customer a RIGHT JOIN company b
+ON
+a.company_id = b.id
+WHERE
+a.company_id IS NULL;
+
+
+----------------------------
+SELECT
+*
+FROM
+customer a LEFT JOIN company b
+ON
+a.company_id = b.id
+WHERE
+b.name LIKE '%移动%';
+
+
+
+--------------------------------
+SELECT
+*
+FROM
+student
+WHERE id > 20
+ORDER BY age DESC, id DESC;
+
+
+--------------------------------------------
+# 假设每页15条（pageSize = 15）
+# 假设查询第n页 （n >= 1）
+# SELECT * FROM student LIMIT (n - 1) * pageSize, pageSize; 
+SELECT * FROM student LIMIT 0, 15; # 查询第一页
+SELECT * FROM student LIMIT 15, 15; # 查询第一页
+
+SELECT
+*
+FROM
+customer
+WHERE customer.company_id = (SELECT id FROM company WHERE name = '中国石油')
