@@ -4,7 +4,9 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
 import java.io.InputStream;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -44,7 +46,6 @@ public final class Dbs {
     public static <T> List<T> query(RowMapper<T> rowMapper, String sql, Object... args) {
         if (null == rowMapper) return null;
 
-        ResultSet resultSet = null;
         try (
                 final PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql);
         ) {
@@ -52,21 +53,21 @@ public final class Dbs {
             for (int i = 0; i < args.length; i++) {
                 preparedStatement.setObject(i + 1, args[i]);
             }
-            resultSet = preparedStatement.executeQuery();
+
             List<T> list = new ArrayList<>();
             int row = 0;
-            while (resultSet.next()) {
-                list.add(rowMapper.generateBean(resultSet, row++));
-            }
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (null != resultSet) resultSet.close();
+
+            try (final ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    list.add(rowMapper.generateBean(resultSet, row++));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }

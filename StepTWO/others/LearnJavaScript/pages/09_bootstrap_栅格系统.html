@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            border: 1px solid black;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bootstrap响应式代码 -->
+    <!-- Bootstrap的栅格系统会将屏幕分为12等份 -->
+    <!-- col-lg-3 表示在大屏幕下，该div占据3份（3/12 = 1/4） 屏幕的1/4-->
+    <!-- col-md-6 表示在中等屏幕下，该div占据6份（6/12 = 1/2） 屏幕的1/2-->
+    <!-- col-sm-12 表示在小屏幕下，该div占据12份（12/12 = 1/1） 整个屏幕-->
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12">div1</div>
+        <div class="col-lg-3 col-md-6 col-sm-12">div2</div>
+        <div class="col-lg-3 col-md-6 col-sm-12">div3</div>
+        <div class="col-lg-3 col-md-6 col-sm-12">div4</div>
+    </div>
+</body>
+</html>

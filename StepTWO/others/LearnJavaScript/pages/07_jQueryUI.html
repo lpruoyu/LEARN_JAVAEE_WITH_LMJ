@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-UI</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #draggable {
+            width: 200px;
+            height: 200px;
+            border: 10px solid red;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+        }
+    </style>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            $("#draggable").draggable()
+        })
+    </script>
+</head>
+<body>
+    <div id="draggable">
+        <strong>I am draggable.</strong>
+    </div>
+</body>
+</html>
