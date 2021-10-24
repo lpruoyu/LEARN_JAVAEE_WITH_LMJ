@@ -1,4 +1,4 @@
-package coder.lp;
+package programmer.lp.main;
 
 /**
  * Hello world!

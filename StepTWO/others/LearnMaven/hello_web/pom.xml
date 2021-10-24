@@ -1,19 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>programmer.lp.main</groupId>
-  <artifactId>hello_maven</artifactId>
+  <groupId>programmer.lp</groupId>
+  <artifactId>hello_web</artifactId>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>hello_maven</name>
+  <name>hello_web Maven Webapp</name>
   <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -22,4 +15,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <finalName>hello_web</finalName>
+  </build>
 </project>
