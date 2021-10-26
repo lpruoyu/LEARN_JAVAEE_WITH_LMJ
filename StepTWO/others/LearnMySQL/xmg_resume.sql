@@ -16,12 +16,12 @@ CREATE TABLE user (
 	email VARCHAR(50) NOT NULL UNIQUE,
 	birthday DATE,
 	photo VARCHAR(100),
-	intro VARCHAR(1000),
+	intro VARCHAR(1000), # 自我介绍
 	name VARCHAR(20),
 	address VARCHAR(100),
 	phone VARCHAR(20),
 	job VARCHAR(20),
-	trait VARCHAR(100),
+	trait VARCHAR(100), # 特点
 	interests VARCHAR(100),
 	PRIMARY KEY (id)
 );

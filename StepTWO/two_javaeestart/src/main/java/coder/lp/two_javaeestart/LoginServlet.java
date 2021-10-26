@@ -21,29 +21,41 @@ public class LoginServlet extends HttpServlet {
         outHTML(req, resp);
     }
 
+
     private void outHTML(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        String username = req.getParameter("username");
-        String userpwd = req.getParameter("userpwd");
+//        File file = new File("D:\\code_space\\LearnJava\\IntellijIdea\\LearnJavaEEWithXMGLMJ\\StepTWO\\two_javaeestart\\src\\main\\webapp\\user.html");
 
-        System.out.println("username : " + username + " , userpwd : " + userpwd);
 
-        PrintWriter writer = resp.getWriter();
-        if ("123".equals(username) && "123".equals(userpwd)) {
-
-            writer.write("<h1 style=\"color: blue; border: 2px solid black\">这是登录成功之后的user页面。</h1>\n" +
-                    "<ul>\n" +
-                    "    <li>个人信息</li>\n" +
-                    "    <li>修改密码</li>\n" +
-                    "    <li>退出登录</li>\n" +
-                    "</ul>");
-        } else {
-            writer.write("<h1 style=\"color: red; border: 2px solid black\">登录失败</h1> ");
-        }
 
     }
+
+
+//    private void outHTML(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        req.setCharacterEncoding("UTF-8");
+//        resp.setContentType("text/html;charset=UTF-8");
+//
+//        String username = req.getParameter("username");
+//        String userpwd = req.getParameter("userpwd");
+//
+//        System.out.println("username : " + username + " , userpwd : " + userpwd);
+//
+//        PrintWriter writer = resp.getWriter();
+//        if ("123".equals(username) && "123".equals(userpwd)) {
+//
+//            writer.write("<h1 style=\"color: blue; border: 2px solid black\">这是登录成功之后的user页面。</h1>\n" +
+//                    "<ul>\n" +
+//                    "    <li>个人信息</li>\n" +
+//                    "    <li>修改密码</li>\n" +
+//                    "    <li>退出登录</li>\n" +
+//                    "</ul>");
+//        } else {
+//            writer.write("<h1 style=\"color: red; border: 2px solid black\">登录失败</h1> ");
+//        }
+//
+//    }
 
     private void outPlain(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("utf-8");
