@@ -1,8 +1,10 @@
 package programmer.lp.resume.servlet;
 
 import org.apache.commons.beanutils.BeanUtils;
+import programmer.lp.resume.base.BaseServlet;
 import programmer.lp.resume.bean.Website;
-import programmer.lp.resume.dao.WebsiteDao;
+import programmer.lp.resume.service.WebsiteService;
+import programmer.lp.resume.service.impl.WebsiteServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,17 +14,17 @@ import java.util.List;
 @WebServlet("/website/*")
 public class WebsiteServlet extends BaseServlet {
 
-    private WebsiteDao dao = new WebsiteDao();
+    private final WebsiteService service = new WebsiteServiceImpl();
 
     public void admin(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            final List<Website> websites = dao.list();
+            final List<Website> websites = service.list();
             Website website = null;
             if (null != websites && !websites.isEmpty()) {
                 website = websites.get(0);
             }
             req.setAttribute("website", website);
-            req.getRequestDispatcher("../static/admin/website.jsp").forward(req, resp);
+            req.getRequestDispatcher("../WEB-INF/admin/website.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +35,7 @@ public class WebsiteServlet extends BaseServlet {
             Website website = new Website();
             BeanUtils.populate(website, req.getParameterMap());
 
-            if (dao.save(website)) {
+            if (service.save(website)) {
                 resp.sendRedirect(req.getContextPath() + "/website/admin");
             } else {
                 forwardError("网站信息保存失败", req, resp);
@@ -62,7 +64,7 @@ public class WebsiteServlet extends BaseServlet {
 //            }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            forwardError(e, req, resp);
         }
     }
 

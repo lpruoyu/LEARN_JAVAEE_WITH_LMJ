@@ -47,6 +47,9 @@ public class Uploads {
         // 全路径
         String filepath = request.getServletContext().getRealPath(path);
 
+
+        System.out.println(filepath);
+
         // 写入文件内容
         FileUtils.copyInputStreamToFile(is, new File(filepath));
 

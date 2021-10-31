@@ -1,5 +1,7 @@
 package programmer.lp.resume.bean;
 
+import programmer.lp.resume.base.BaseBean;
+
 public class Website extends BaseBean {
 
     private String footer;

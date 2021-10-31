@@ -1,5 +1,8 @@
 package programmer.lp.resume.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import programmer.lp.resume.base.BaseBean;
+
 import java.util.Date;
 
 public class Education extends BaseBean {
@@ -10,12 +13,16 @@ public class Education extends BaseBean {
     private Date endDay;
 
     private Integer type;
+
     public Integer getType() {
         return type;
     }
+
     public void setType(Integer type) {
         this.type = type;
     }
+
+    @JsonIgnore
     public String getTypeString() {
         String typeString = "其他";
         switch (type) {
@@ -78,4 +85,5 @@ public class Education extends BaseBean {
     public void setEndDay(Date endDay) {
         this.endDay = endDay;
     }
+
 }
