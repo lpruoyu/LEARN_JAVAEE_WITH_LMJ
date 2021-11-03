@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import programmer.lp.resume.base.BaseDaoImpl;
 import programmer.lp.resume.bean.Website;
 import programmer.lp.resume.dao.WebsiteDao;
-import programmer.lp.resume.util.Dbs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +22,18 @@ public class WebsiteDaoImpl extends BaseDaoImpl<Website> implements WebsiteDao {
             sql = "UPDATE website SET footer = ? WHERE id = ?";
             args.add(id);
         }
-        return Dbs.jdbcTemplate().update(sql, args.toArray()) == 1;
+        return JDBCTEMPLATE.update(sql, args.toArray()) == 1;
     }
 
     @Override
     public List<Website> list() {
         String sql = "SELECT id, created_time, last_update_time ,footer FROM website";
-        return Dbs.jdbcTemplate().query(sql, new BeanPropertyRowMapper<>(Website.class));
+        return JDBCTEMPLATE.query(sql, new BeanPropertyRowMapper<>(Website.class));
     }
-
-    @Override
-    protected String tableName() {
-        return "website";
-    }
+//
+//    @Override
+//    protected String tableName() {
+//        return "website";
+//    }
 
 }

@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/education/*")
-public class EducationServlet extends BaseServlet {
+public class EducationServlet extends BaseServlet<Education> {
 
     private final EducationService service = new EducationServiceImpl();
 
     public void admin(HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setAttribute("educations", service.list());
-            req.getRequestDispatcher("../WEB-INF/admin/education.jsp").forward(req, resp);
+            forward(req, resp, "admin/education.jsp");
         } catch (Exception e) {
             forwardError(e, req, resp);
         }
@@ -29,7 +29,7 @@ public class EducationServlet extends BaseServlet {
             Education education = new Education();
             BeanUtils.populate(education, req.getParameterMap());
             if (service.save(education)) {
-                resp.sendRedirect(req.getContextPath() + "/education/admin");
+                redirect(req, resp, "education/admin");
             } else {
                 forwardError("教育信息保存失败", req, resp);
             }
@@ -42,7 +42,7 @@ public class EducationServlet extends BaseServlet {
     public void remove(HttpServletRequest req, HttpServletResponse resp) {
         try {
             if (service.removeAll(intIds(req.getParameterValues("id")))) {
-                resp.sendRedirect(req.getContextPath() + "/education/admin");
+                redirect(req, resp, "education/admin");
             } else {
                 forwardError("教育信息删除失败", req, resp);
             }

@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import programmer.lp.resume.base.BaseDaoImpl;
 import programmer.lp.resume.bean.Skill;
 import programmer.lp.resume.dao.SkillDao;
-import programmer.lp.resume.util.Dbs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +24,18 @@ public class SkillDaoImpl extends BaseDaoImpl<Skill> implements SkillDao {
             sql = "UPDATE " + tableName + " SET name = ?, level = ? WHERE id = ?";
             args.add(id);
         }
-        return Dbs.jdbcTemplate().update(sql, args.toArray()) == 1;
+        return JDBCTEMPLATE.update(sql, args.toArray()) == 1;
     }
 
     @Override
     public List<Skill> list() {
         final String sql = "SELECT id, created_time, last_update_time, name, level FROM " + tableName();
-        return Dbs.jdbcTemplate().query(sql, new BeanPropertyRowMapper<>(Skill.class));
+        return JDBCTEMPLATE.query(sql, new BeanPropertyRowMapper<>(Skill.class));
     }
-
-    @Override
-    protected String tableName() {
-        return "skill";
-    }
+//
+//    @Override
+//    protected String tableName() {
+//        return "skill";
+//    }
 
 }

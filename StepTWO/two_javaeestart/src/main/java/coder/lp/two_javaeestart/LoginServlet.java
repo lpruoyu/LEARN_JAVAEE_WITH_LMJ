@@ -18,7 +18,12 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        outHTML(req, resp);
+//        outHTML(req, resp);
+
+        System.out.println("two execute");
+
+//        resp.sendRedirect("/three/login");
+
     }
 
 
@@ -28,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 //        File file = new File("D:\\code_space\\LearnJava\\IntellijIdea\\LearnJavaEEWithXMGLMJ\\StepTWO\\two_javaeestart\\src\\main\\webapp\\user.html");
 
-
+//        resp.getWriter().write("this is two");
 
     }
 

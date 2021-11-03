@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import programmer.lp.resume.base.BaseDaoImpl;
 import programmer.lp.resume.bean.Education;
 import programmer.lp.resume.dao.EducationDao;
-import programmer.lp.resume.util.Dbs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,18 +26,18 @@ public class EducationDaoImpl extends BaseDaoImpl<Education> implements Educatio
             sql = "UPDATE education SET name = ?, type = ?, intro = ?, begin_day = ?, end_day = ? WHERE id = ?";
             args.add(id);
         }
-        return Dbs.jdbcTemplate().update(sql, args.toArray()) == 1;
+        return JDBCTEMPLATE.update(sql, args.toArray()) == 1;
     }
 
     @Override
     public List<Education> list() {
         String sql = "SELECT id, created_time, last_update_time, name, type, intro, begin_day, end_day FROM education ORDER BY type ASC";
-        return Dbs.jdbcTemplate().query(sql, new BeanPropertyRowMapper<>(Education.class));
+        return JDBCTEMPLATE.query(sql, new BeanPropertyRowMapper<>(Education.class));
     }
 
-    @Override
-    protected String tableName() {
-        return "education";
-    }
+//    @Override
+//    protected String tableName() {
+//        return "education";
+//    }
 
 }

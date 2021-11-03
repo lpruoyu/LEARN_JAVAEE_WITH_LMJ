@@ -7,7 +7,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class BaseServlet extends HttpServlet {
+public abstract class BaseServlet<T extends BaseBean> extends HttpServlet {
+
+    protected final BaseService<T> service = newService();
+
+    private BaseService<T> newService() {
+        // programmer.lp.resume.servlet.AwardServlet
+        // programmer.lp.resume.service.impl.AwardServiceImpl
+
+        String name = this.getClass().getName()
+                .replace(".servlet.", ".service.impl.")
+                .replace("Servlet", "ServiceImpl");
+        try {
+            return (BaseService<T>) Class.forName(name).newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -17,13 +35,29 @@ public class BaseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            req.setCharacterEncoding("utf-8");
+            req.setCharacterEncoding("UTF-8");
             String[] split = req.getRequestURI().split("/");
             String methodName = split[split.length - 1];
             Method method = getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
             method.invoke(this, req, resp);
         } catch (Exception e) {
             forwardError(e, req, resp);
+        }
+    }
+
+    protected void redirect(HttpServletRequest req, HttpServletResponse resp, String path) {
+        try {
+            resp.sendRedirect(req.getContextPath() + "/" + path);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void forward(HttpServletRequest req, HttpServletResponse resp, String path) {
+        try {
+            req.getRequestDispatcher("/WEB-INF/" + path).forward(req, resp);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -53,7 +87,7 @@ public class BaseServlet extends HttpServlet {
     protected void forwardError(String error, HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setAttribute("error", error);
-            req.getRequestDispatcher("../WEB-INF/error.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/error.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }

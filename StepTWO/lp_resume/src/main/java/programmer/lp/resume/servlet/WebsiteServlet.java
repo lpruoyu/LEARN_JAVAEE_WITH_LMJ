@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @WebServlet("/website/*")
-public class WebsiteServlet extends BaseServlet {
+public class WebsiteServlet extends BaseServlet<Website> {
 
     private final WebsiteService service = new WebsiteServiceImpl();
 
@@ -24,7 +24,7 @@ public class WebsiteServlet extends BaseServlet {
                 website = websites.get(0);
             }
             req.setAttribute("website", website);
-            req.getRequestDispatcher("../WEB-INF/admin/website.jsp").forward(req, resp);
+            forward(req, resp, "admin/website.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,13 +36,13 @@ public class WebsiteServlet extends BaseServlet {
             BeanUtils.populate(website, req.getParameterMap());
 
             if (service.save(website)) {
-                resp.sendRedirect(req.getContextPath() + "/website/admin");
+                redirect(req, resp, "website/admin");
             } else {
                 forwardError("网站信息保存失败", req, resp);
             }
 
 //            if (null == website.getId()) { // 插入
-//                //TODO 如果用户直接在浏览器输入save的话，此时id为null，也会插入一条数据，如何解决？
+//                // 如果用户直接在浏览器输入save的话，此时id为null，也会插入一条数据，如何解决？
 //                if (dao.insert(website)) { // 成功
 //                    resp.sendRedirect(req.getContextPath() + "/website/admin");
 //                } else { // 失败

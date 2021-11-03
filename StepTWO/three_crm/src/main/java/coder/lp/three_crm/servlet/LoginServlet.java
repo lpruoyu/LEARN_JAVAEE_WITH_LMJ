@@ -14,6 +14,7 @@ import java.util.List;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -24,17 +25,19 @@ public class LoginServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        String username = req.getParameter("username");
-        String userpswd = req.getParameter("userpswd");
+//        resp.getWriter().write("this is three");
 
-//        System.out.println("username : " + username + " , userpwd : " + userpswd);
-
-        PrintWriter writer = resp.getWriter();
-        if ("123".equals(username) && "123".equals(userpswd)) {
-            successful(writer);
-        } else {
-            failed(writer);
-        }
+//        String username = req.getParameter("username");
+//        String userpswd = req.getParameter("userpswd");
+//
+////        System.out.println("username : " + username + " , userpwd : " + userpswd);
+//
+//        PrintWriter writer = resp.getWriter();
+//        if ("123".equals(username) && "123".equals(userpswd)) {
+//            successful(writer);
+//        } else {
+//            failed(writer);
+//        }
     }
 
     private void successful(PrintWriter writer) {

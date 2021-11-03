@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/skill/*")
-public class SkillServlet extends BaseServlet {
+public class SkillServlet extends BaseServlet<Skill> {
 
     private final SkillService service = new SkillServiceImpl();
 
     public void admin(HttpServletRequest req, HttpServletResponse resp) {
         try {
             req.setAttribute("skills", service.list());
-            req.getRequestDispatcher("../WEB-INF/admin/skill.jsp").forward(req, resp);
+            forward(req, resp, "admin/skill.jsp");
         } catch (Exception e) {
             forwardError(e, req, resp);
-            e.printStackTrace();
         }
     }
 
@@ -30,26 +29,24 @@ public class SkillServlet extends BaseServlet {
             Skill skill = new Skill();
             BeanUtils.populate(skill, req.getParameterMap());
             if (service.save(skill)) {
-                resp.sendRedirect(req.getContextPath() + "/skill/admin");
+                redirect(req, resp, "skill/admin");
             } else {
                 forwardError("技能信息保存失败", req, resp);
             }
         } catch (Exception e) {
             forwardError(e, req, resp);
-            e.printStackTrace();
         }
     }
 
     public void remove(HttpServletRequest req, HttpServletResponse resp) {
         try {
             if (service.removeAll(intIds(req.getParameterValues("id")))) {
-                resp.sendRedirect(req.getContextPath() + "/skill/admin");
+                redirect(req, resp, "skill/admin");
             } else {
                 forwardError("技能信息删除失败", req, resp);
             }
         } catch (Exception e) {
             forwardError(e, req, resp);
-            e.printStackTrace();
         }
     }
 

@@ -4,9 +4,29 @@ import java.util.List;
 
 public abstract class BaseServiceImpl<T extends BaseBean> implements BaseService<T> {
 
-    private final BaseDao<T> dao = dao();
+    private final BaseDao<T> dao = newDao();
 
-    protected abstract BaseDao<T> dao();
+    protected BaseDao<T> dao() {
+        return dao;
+    }
+
+    protected BaseDao<T> newDao() {
+
+        // programmer.lp.resume.service.impl.AwardServiceImpl
+        // programmer.lp.resume.dao.impl.AwardDaoImpl
+
+        String name = this.getClass().getName()
+                .replace(".service.", ".dao.")
+                .replace("ServiceImpl", "DaoImpl");
+        try {
+            return (BaseDao<T>) Class.forName(name).newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+//    protected abstract BaseDao<T> dao();
 
     @Override
     public boolean save(T bean) {

@@ -40,4 +40,5 @@ public class Company extends BaseBean {
     public void setIntro(String intro) {
         this.intro = intro;
     }
+
 }
