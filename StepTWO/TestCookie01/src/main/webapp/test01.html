@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test01</title>
+</head>
+<body>
+<script>
+    function addCookie() {
+        const key = document.getElementById('cookie-key').value
+        const value = document.getElementById('cookie-value').value
+        const time = document.getElementById('cookie-time').value
+        document.cookie = key + '=' + value + '; max-age=' + time
+    }
+
+    function viewCookie() {
+        console.log(document.cookie)
+    }
+</script>
+<div>
+    <input placeholder="cookie-key" type="text" id="cookie-key">
+</div>
+<div>
+    <input placeholder="cookie-value" type="text" id="cookie-value">
+</div>
+<div>
+    <input placeholder="cookie-time" type="text" id="cookie-time">
+</div>
+<div>
+    <button onclick="addCookie()">添加Cookie</button>
+    <button onclick="viewCookie()">查看Cookie</button>
+</div>
+</body>
+</html>

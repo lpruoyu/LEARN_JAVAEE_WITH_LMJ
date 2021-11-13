@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
 <!-- #END# Overlay For Sidebars -->
@@ -40,17 +41,24 @@
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="${ctx}/asset/admin/img/avatar.png" alt="User">
+                <c:choose>
+                    <c:when test="${empty user.photo}">
+                        <img src="${ctx}/asset/admin/img/avatar.png" alt="User">
+                    </c:when>
+                    <c:otherwise>
+                        <img src="${ctx}/${user.photo}" alt="User">
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="info-container">
-                <div class="name">lpruoyu</div>
-                <div class="email">LP | 讲师</div>
+                <div class="name">${user.name}</div>
+                <div class="email">${user.email}</div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="${ctx}/front/user.html"><i class="material-icons">person</i>个人信息</a></li>
+                        <li><a href="${ctx}"><i class="material-icons">person</i>我的简历</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="${ctx}/WEB-INF/login.jsp"><i class="material-icons">input</i>退出登录</a></li>
+                        <li><a href="${ctx}/user/logout"><i class="material-icons">input</i>退出登录</a></li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +68,7 @@
         <div class="menu">
             <ul class="list">
                 <li class="user">
-                    <a href="${ctx}/WEB-INF/admin/user.html">
+                    <a href="${ctx}/user/admin">
                         <i class="material-icons">person</i>
                         <span>个人信息</span>
                     </a>
@@ -72,7 +80,7 @@
                     </a>
                 </li>
                 <li class="password">
-                    <a href="${ctx}/WEB-INF/admin/password.html">
+                    <a href="${ctx}/user/password">
                         <i class="material-icons">lock</i>
                         <span>修改密码</span>
                     </a>
@@ -90,13 +98,13 @@
                     </a>
                 </li>
                 <li class="experience">
-                    <a href="${ctx}/WEB-INF/admin/experience.html">
+                    <a href="${ctx}/experience/admin">
                         <i class="material-icons">work</i>
                         <span>工作经验</span>
                     </a>
                 </li>
                 <li class="project">
-                    <a href="${ctx}/WEB-INF/admin/project.html">
+                    <a href="${ctx}/project/admin">
                         <i class="material-icons">build</i>
                         <span>项目经验</span>
                     </a>
@@ -108,7 +116,7 @@
                     </a>
                 </li>
                 <li class="contact">
-                    <a href="${ctx}/WEB-INF/admin/contact.html">
+                    <a href="${ctx}/contact/admin">
                         <i class="material-icons">comment</i>
                         <span>留言信息</span>
                     </a>

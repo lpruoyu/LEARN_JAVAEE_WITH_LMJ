@@ -1,10 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
     <title>LP简历管理-教育信息</title>
     <%@include file="common/head.jsp" %>
 </head>
@@ -121,7 +118,7 @@
             </div>
             <div class="modal-body">
                 <form action="${ctx}/education/save" class="form-validation" method="post">
-                    <input type="hidden" name="id">
+                    <input type="text" style="display: none" name="id">
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                             <label for="name">名称</label>

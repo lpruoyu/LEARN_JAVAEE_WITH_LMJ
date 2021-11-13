@@ -1,13 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
     <title>LP简历管理-获奖成就</title>
-
     <%@include file="common/head.jsp" %>
-
 </head>
 
 <body class="theme-blue">
@@ -41,56 +37,60 @@
                             </div>
                         </div>
 
-                        <form method="post" action="${ctx}/award/remove" id="remove_all_form">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                <tr>
-                                    <th>
-                                        <div class="switch">
-                                            <label><input type="checkbox"><span
-                                                    class="lever switch-col-blue"></span></label>
-                                        </div>
-                                    </th>
-                                    <th>名称</th>
-                                    <th>图片</th>
-                                    <th>简介</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${awards}" var="award">
+                        <c:if test="${not empty awards}">
+
+                            <form method="post" action="${ctx}/award/remove" id="remove_all_form">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
                                     <tr>
-                                        <td>
+                                        <th>
                                             <div class="switch">
-                                                <label><input name="id" value="${award.id}" type="checkbox"><span
+                                                <label><input type="checkbox"><span
                                                         class="lever switch-col-blue"></span></label>
                                             </div>
-                                        </td>
-                                        <td>${award.name}</td>
-
-                                            <%--图片--%>
-                                        <td>
-                                            <img src="${ctx}/${award.image}" alt="">
-                                        </td>
-
-                                        <td>${award.intro}</td>
-                                        <td>
-                                            <button type="button" class="btn bg-blue waves-effect btn-xs"
-                                                    onclick="edit(${award.json})">
-                                                <i class="material-icons">edit</i>
-                                                <span>编辑</span>
-                                            </button>
-                                            <button type="button" class="btn bg-pink waves-effect btn-xs"
-                                                    onclick="remove('${award.name}', '${award.id}')">
-                                                <i class="material-icons">delete</i>
-                                                <span>删除</span>
-                                            </button>
-                                        </td>
+                                        </th>
+                                        <th>名称</th>
+                                        <th>图片</th>
+                                        <th>简介</th>
+                                        <th>操作</th>
                                     </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </form>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${awards}" var="award">
+                                        <tr>
+                                            <td>
+                                                <div class="switch">
+                                                    <label><input name="id" value="${award.id}" type="checkbox"><span
+                                                            class="lever switch-col-blue"></span></label>
+                                                </div>
+                                            </td>
+                                            <td>${award.name}</td>
+
+                                                <%--图片--%>
+                                            <td>
+                                                <img src="${ctx}/${award.image}" alt="">
+                                            </td>
+
+                                            <td>${award.intro}</td>
+                                            <td>
+                                                <button type="button" class="btn bg-blue waves-effect btn-xs"
+                                                        onclick="edit(${award.json})">
+                                                    <i class="material-icons">edit</i>
+                                                    <span>编辑</span>
+                                                </button>
+                                                <button type="button" class="btn bg-pink waves-effect btn-xs"
+                                                        onclick="remove('${award.name}', '${award.id}')">
+                                                    <i class="material-icons">delete</i>
+                                                    <span>删除</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                        </c:if>
 
                     </div>
                 </div>

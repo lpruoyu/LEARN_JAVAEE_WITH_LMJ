@@ -2,6 +2,14 @@ package programmer.lp.resume.util;
 
 public final class Strings {
 
+    public static boolean isNull(final String str) {
+        return str == null || "".equals(str);
+    }
+
+    public static boolean isNotNull(final String str) {
+        return str != null && !"".equals(str);
+    }
+
     public static String underLineCase(final String source) {
         if (null == source || "".equals(source)) return source;
 

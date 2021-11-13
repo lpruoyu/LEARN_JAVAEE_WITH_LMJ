@@ -1,9 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
     <title>LP简历管理-专业技能</title>
     <%@include file="common/head.jsp" %>
 </head>
@@ -105,7 +103,7 @@
             </div>
             <div class="modal-body">
                 <form action="${ctx}/skill/save" id="add-save-from" class="form-validation" method="post">
-                    <input name="id" type="hidden">
+                    <input name="id" type="text" style="display: none">
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                             <label for="name">名称</label>

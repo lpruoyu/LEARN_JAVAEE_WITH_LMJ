@@ -8,7 +8,7 @@ import programmer.lp.resume.util.Jsons;
 
 import java.util.Date;
 
-public class BaseBean {
+public abstract class BaseBean {
 
     static {
         // 配置BeanUtils：String -> Date
@@ -38,7 +38,7 @@ public class BaseBean {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public Date getCreatedTime() {
         return createdTime;
     }

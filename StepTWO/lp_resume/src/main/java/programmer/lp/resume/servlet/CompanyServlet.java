@@ -1,9 +1,6 @@
 package programmer.lp.resume.servlet;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import programmer.lp.resume.base.BaseServlet;
 import programmer.lp.resume.bean.Company;
 import programmer.lp.resume.service.CompanyService;
@@ -13,8 +10,6 @@ import programmer.lp.resume.util.Uploads;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet("/company/*")
@@ -32,36 +27,22 @@ public class CompanyServlet extends BaseServlet<Company> {
     }
 
     public void save(HttpServletRequest req, HttpServletResponse resp) {
-
         try {
-
-            String finalImage = null;
-            final ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
-            upload.setHeaderEncoding("UTF-8");
-            final List<FileItem> fileItems = upload.parseRequest(req);
-            final Map<String, String> requestParams = new HashMap<>();
-
-            for (FileItem fileItem : fileItems) {
-                final String fieldName = fileItem.getFieldName();
-                if (fileItem.isFormField()) { // 非文件
-                    requestParams.put(fieldName, fileItem.getString("UTF-8"));
-                } else { // 文件
-                    finalImage = Uploads.uploadImage(req, fileItem);
-                }
-            }
-
+            Map<String, String> requestParams = Uploads.parseParam(req);
+            String finalImage = requestParams.get("finalImage");
             Company company = new Company();
             BeanUtils.populate(company, requestParams);
-
             String oldImage = null;
-
             if (null != finalImage) {
                 oldImage = company.getLogo();
                 company.setLogo(finalImage);
             }
-
             try {
                 if (service.save(company)) {
+                    // 保存成功，删除旧图片
+                    if (null != oldImage && !"".equals(oldImage)) {
+                        Uploads.removeImage(oldImage, req.getServletContext());
+                    }
                     redirect(req, resp, "company/admin");
                 } else {
                     forwardError("公司信息保存失败", req, resp);
@@ -73,12 +54,6 @@ public class CompanyServlet extends BaseServlet<Company> {
                     Uploads.removeImage(finalImage, req.getServletContext());
                 }
             }
-
-            // 保存成功，删除旧图片
-            if (null != oldImage && !"".equals(oldImage)) {
-                Uploads.removeImage(oldImage, req.getServletContext());
-            }
-
         } catch (Exception e) {
             forwardError(e, req, resp);
         }
@@ -97,7 +72,6 @@ public class CompanyServlet extends BaseServlet<Company> {
             }
         } catch (Exception e) {
             forwardError(e, req, resp);
-            e.printStackTrace();
         }
     }
 

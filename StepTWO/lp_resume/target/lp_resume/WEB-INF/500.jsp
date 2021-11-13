@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
     <title>LP教育-500</title>
     <%@ include file="common/head.jsp" %>
 </head>

@@ -1,17 +1,12 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
     <title>LP简历管理-网站信息</title>
-
     <%@include file="common/head.jsp" %>
-
 </head>
 
 <body class="theme-blue">
-
 
 <%@include file="common/top.jsp" %>
 
@@ -25,7 +20,7 @@
                     </div>
                     <div class="body">
                         <form action="${ctx}/website/save" class="form-validation" method="post">
-                            <input type="hidden" value="${website.id}" name="id">
+                            <input type="text" style="display:none;" value="${website.id}" name="id">
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 form-control-label">
                                     <label for="footer">底部</label>

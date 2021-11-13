@@ -10,25 +10,27 @@ import java.util.List;
 
 public class CompanyServiceImpl extends BaseServiceImpl<Company> implements CompanyService {
 
-
     private String localFileBasePath;
 
     public void setLocalFileBasePath(String path) {
         localFileBasePath = path;
     }
-//
+
 //    @Override
 //    protected BaseDao<Award> dao() {
 //        return new AwardDaoImpl();
 //    }
 
-    @Override
     public boolean removeAll(Integer[] ids) {
         CompanyDaoImpl impl = (CompanyDaoImpl) dao();
-        final List<String> list = impl.list(ids);
-        for (String s : list) {
-            Uploads.removeImage(s, localFileBasePath);
+        if (impl.removeAll(ids)) {
+            final List<String> list = impl.list(ids);
+            for (String s : list) {
+                Uploads.removeImage(s, localFileBasePath);
+            }
+            return true;
         }
-        return impl.removeAll(ids);
+        return false;
     }
+
 }

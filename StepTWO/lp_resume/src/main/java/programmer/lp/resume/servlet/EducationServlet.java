@@ -4,7 +4,11 @@ import org.apache.commons.beanutils.BeanUtils;
 import programmer.lp.resume.base.BaseServlet;
 import programmer.lp.resume.bean.Education;
 import programmer.lp.resume.service.EducationService;
+import programmer.lp.resume.service.UserService;
+import programmer.lp.resume.service.WebsiteService;
 import programmer.lp.resume.service.impl.EducationServiceImpl;
+import programmer.lp.resume.service.impl.UserServiceImpl;
+import programmer.lp.resume.service.impl.WebsiteServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/education/*")
 public class EducationServlet extends BaseServlet<Education> {
+
+    private WebsiteService websiteService = new WebsiteServiceImpl();
+    private UserService userService = new UserServiceImpl();
+
+    public void front(HttpServletRequest req, HttpServletResponse resp) {
+        req.setAttribute("educations", service.list());
+        req.setAttribute("user", userService.list().get(0));
+        req.setAttribute("website", websiteService.list().get(0));
+        forward(req, resp, "front/education.jsp");
+    }
 
     private final EducationService service = new EducationServiceImpl();
 

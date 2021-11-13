@@ -26,7 +26,7 @@ public class WebsiteServlet extends BaseServlet<Website> {
             req.setAttribute("website", website);
             forward(req, resp, "admin/website.jsp");
         } catch (Exception e) {
-            e.printStackTrace();
+            forwardError(e, req, resp);
         }
     }
 
@@ -34,7 +34,6 @@ public class WebsiteServlet extends BaseServlet<Website> {
         try {
             Website website = new Website();
             BeanUtils.populate(website, req.getParameterMap());
-
             if (service.save(website)) {
                 redirect(req, resp, "website/admin");
             } else {

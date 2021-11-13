@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface BaseDao<T extends BaseBean> {
 
+// 此方法不严谨
 //    default String tableName() {
 //        final String name = this.getClass().getSimpleName();
 //        final String dao = name.substring(0, name.indexOf("Dao"));
