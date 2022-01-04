@@ -1,4 +1,4 @@
-## LEARN_JAVAEE_WITH_XMGLMJ
+## LEARN_JAVAEE_WITH_LMJ
 ## 小码哥Java从零到架构师学习
 ## 第一季：https://ke.qq.com/course/465141
 ## 第二季：https://ke.qq.com/course/461051
