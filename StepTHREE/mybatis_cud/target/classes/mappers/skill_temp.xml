@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="skill_temp">
+    <sql id="sqlListAll">
+        SELECT * FROM skill
+    </sql>
+    <select id="select0" parameterType="String" resultType="Skill">
+        <include refid="sqlListAll"/>
+    </select>
+    <select id="select1" parameterType="String" resultType="Skill">
+        <include refid="sqlListAll"/> WHERE name LIKE #{name}
+    </select>
+    <select id="select2" parameterType="Integer" resultType="Skill">
+        <include refid="sqlListAll"/> WHERE level > #{level}
+    </select>
+    <select id="select3" parameterType="Map" resultType="Skill">
+        <include refid="sqlListAll"/> WHERE name LIKE #{name} AND level &lt; #{level}
+    </select>
+</mapper>

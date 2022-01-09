@@ -26,9 +26,7 @@ public final class Dbs {
     }
 
     public static int update(final String sql, Object... args) {
-        try (
-                final PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql)
-        ) {
+        try (PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql)) {
             for (int i = 0; i < args.length; i++) {
                 preparedStatement.setObject(i + 1, args[i]);
             }

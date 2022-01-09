@@ -1,5 +1,6 @@
 package programmer.lp.resume.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import org.apache.commons.beanutils.BeanUtils;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -91,26 +93,31 @@ public class UserServlet extends BaseServlet<User> {
 
     public void login(HttpServletRequest req, HttpServletResponse resp) {
         try {
-//            String captchaClient = req.getParameter("captcha");
-//            if (Strings.isNotNull(captchaClient)) {
-//                // 将用户输入的验证码转化为小写形式
-//                captchaClient = captchaClient.toLowerCase();
-//            }
-//            if (!captchaClient.equals(req.getSession().getAttribute("captcha"))) {
-//                forwardError("验证码不正确", req, resp);
-//                return;
-//            }
-            User user = new User();
-            BeanUtils.populate(user, req.getParameterMap());
-            UserService userService = (UserService) service;
-            user = userService.login(user);
-            if (null != user) { // 登录成功
-                // 将User对象设置到Session中，代表用户已经登录过了
-                req.getSession().setAttribute("user", user);
-                redirect(req, resp, "user/admin");
-            } else {
-                forwardError("用户名或密码不正确", req, resp);
+            Map<String, Object> map = new HashMap<>();
+            String captchaClient = req.getParameter("captcha");
+            if (Strings.isNotNull(captchaClient)) {
+                // 将用户输入的验证码转化为小写形式
+                captchaClient = captchaClient.toLowerCase();
             }
+            if (!captchaClient.equals(req.getSession().getAttribute("captcha"))) { // 验证码不正确
+                map.put("success", false);
+                map.put("message", "验证码不正确");
+            } else { // 验证码正确
+                User user = new User();
+                BeanUtils.populate(user, req.getParameterMap());
+                UserService userService = (UserService) service;
+                user = userService.login(user);
+                if (null != user) { // 登录成功
+                    // 将User对象设置到Session中，代表用户已经登录过了
+                    req.getSession().setAttribute("user", user);
+                    map.put("success", true);
+                } else {
+                    map.put("success", false);
+                    map.put("message", "用户名或密码不正确");
+                }
+            }
+            resp.setContentType("text/json; charset=UTF-8");
+            resp.getWriter().write(new ObjectMapper().writeValueAsString(map));
         } catch (Exception e) {
             forwardError(e, req, resp);
         }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="apple" class="programmer.lp.domain.Food"/>
+
+    <bean id="baby" class="programmer.lp.domain.Human">
+        <property name="name" value="小宝"/>
+        <property name="food" value="#{apple}"/>
+        <property name="favoriteFood" value="#{apple.testName}"/>
+        <!-- <property name="favoriteFood" value="#{apple.getTestName()}"/> -->
+        <property name="fnByteLength" value="#{apple.testName.bytes.length}"/>
+        <!--        <property name="foodNameLength" value="#{apple.getTestName().getBytes().length}"/>-->
+        <property name="birthday" value="#{new java.util.Date()}"/>
+    </bean>
+
+</beans>
+
+        <!--    <context:property-placeholder location="db.properties"/>-->
+        <!--                                         &lt;!&ndash; classpath: 可省略，默认就在classpath中去找&ndash;&gt;-->
+        <!--&lt;!&ndash;  <context:property-placeholder location="classpath:db.properties"/> &ndash;&gt;-->
+        <!--    <bean id="connection" class="programmer.lp.obj.ConnectionFactoryBean">-->
+        <!--        <property name="url" value="${jdbc.url}"/>-->
+        <!--        <property name="username" value="${jdbc.username}"/>-->
+        <!--        <property name="password" value="${jdbc.password}"/>-->
+        <!--    </bean>-->
+
+
+        <!--    <bean id="personx" class="programmer.lp.domain.Person">-->
+        <!--        <constructor-arg name="age" value="21"/>-->
+        <!--        <constructor-arg name="name" value="LPRUOYU"/>-->
+        <!--    </bean>-->
+
+        <!--    <bean id="person" class="programmer.lp.domain.Person" p:age="21" p:name="lpruoyu" />-->
+        <!--    <bean id="dog" class="programmer.lp.domain.Dog" p:name="史努比" p:nickName="小比"/>-->
+        <!--    <bean id="person" class="programmer.lp.domain.Person" p:dog-ref="dog"/>-->
+
+        <!--    <bean id="connection" class="programmer.lp.obj.ConnectionFactoryBean">-->
+        <!--        <property name="url" value="jdbc:mysql://localhost:3306/bookstore"/>-->
+        <!--        <property name="username" value="root"/>-->
+        <!--        <property name="password" value="root"/>-->
+        <!--    </bean>-->
+
+
+        <!--    <bean id="factory" class="programmer.lp.obj.ConnectionFactory">-->
+        <!--        <property name="url" value="jdbc:mysql://localhost:3306/lp_resume"/>-->
+        <!--        <property name="username" value="root"/>-->
+        <!--        <property name="password" value="root"/>-->
+        <!--    </bean>-->
+        <!--    <bean id="connection" factory-bean="factory" factory-method="getConnection"/>-->
+
+
+        <!--    <bean id="connection" class="programmer.lp.obj.ConnectionFactory" factory-method="getConnection"/>-->

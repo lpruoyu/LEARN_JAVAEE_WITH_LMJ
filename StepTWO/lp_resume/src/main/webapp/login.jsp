@@ -22,7 +22,8 @@
                             <i class="material-icons">email</i>
                         </span>
                     <div class="form-line">
-                        <input type="email" value="lpruoyu@foxmail.com" class="form-control" name="email" maxlength="50" placeholder="邮箱" required
+                        <input type="email"
+                               class="form-control" name="email" maxlength="50" placeholder="邮箱" required
                                autofocus>
                     </div>
                 </div>
@@ -32,7 +33,8 @@
                         </span>
                     <div class="form-line">
                         <input type="text" style="display: none" name="password">
-                        <input type="password" value="123" class="form-control"
+                        <input type="password"
+                               class="form-control"
                                id="originalPassword" maxlength="20"
                                placeholder="密码"
                                required>
@@ -44,7 +46,7 @@
                         </span>
                     <div class="form-line">
                         <input type="text" class="form-control" name="captcha" placeholder="验证码"
-<%--                               required--%>
+                               required
                         >
                     </div>
                     <img id="captcha" src="${ctx}/user/captcha" alt="验证码">
@@ -79,11 +81,45 @@
 <script src="${ctx}/asset/admin/js/default.js"></script>
 <script src="${ctx}/asset/admin/js/main.js"></script>
 <script src="${ctx}/asset/plugin/Javascript-md5/md5.min.js"></script>
+<script src="${ctx}/asset/plugin/sweetalert/sweetalert.min.js"></script>
 <script>
     addValidatorRules('.form-validation', function () {
+
         $('[name=password]').val(md5($('#originalPassword').val()))
-        return true
+
+        // 先弹框
+        // 利用该弹框，既能阻止用户多次点击登录发送异步请求，又能提升用户体验
+        swal({
+            title: '正在登录中...',
+            text: ' ',
+            icon: 'info',
+            button: false,
+            closeOnClickOutside: false
+        })
+
+        // 利用AJAX发送请求给服务器
+        $.post('${ctx}/user/login', {
+            email: $('[name=email]').val(),
+            password: $('[name=password]').val(),
+            captcha: $('[name=captcha]').val()
+        }, function (data) {
+            if (data.success) {
+                location.href = '${ctx}/user/admin'
+            } else {
+                swal({
+                    title: "提示",
+                    text: data.message,
+                    icon: 'error',
+                    dangerMode: true,
+                    buttons: false,
+                    timer: 1500
+                })
+            }
+        }, 'json')
+
+        return false
     })
+
     $('#captcha').click(function () {
         $(this).attr('src', '${ctx}/user/captcha?time=' + new Date().getTime())
         <%--$(this).hide().attr('src', '${ctx}/user/captcha?time=' + new Date().getTime()).fadeIn()--%>

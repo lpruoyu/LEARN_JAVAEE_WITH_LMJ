@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="skill">
+
+    <insert id="batchInsert" parameterType="List"
+            useGeneratedKeys="true"
+            keyProperty="id">
+       <!-- keyProperty是指JavaBean的属性名，不是数据库的字段名 -->
+        INSERT INTO skill(name, level) VALUES
+        <foreach collection="list" item="skill" separator=",">
+            (#{skill.name}, #{skill.level})
+        </foreach>
+    </insert>
+
+    <delete id="batchDelete3" parameterType="List">
+        DELETE FROM skill_test
+        <foreach collection="list" item="id"
+                 separator=","
+                 open="WHERE id IN (" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="batchDelete2" parameterType="List">
+        DELETE FROM skill WHERE id IN
+        <foreach collection="list" item="id"
+                 separator=","
+                 open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <delete id="batchDelete" parameterType="List">
+        DELETE FROM skill WHERE id IN (
+        <foreach collection="list" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
+
+    <insert id="batchInsert1">
+        INSERT INTO skill(name, level) VALUES
+        <foreach collection="array" item="skill" separator=",">
+            (#{skill.name}, #{skill.level})
+        </foreach>
+    </insert>
+
+    <select id="dynamicSQL" parameterType="Map" resultType="programmer.lp.Skill">
+        SELECT * FROM skill
+        <where>
+            <if test="id != null">
+                AND id > #{id}
+            </if>
+            <if test="name != null">
+                AND name LIKE #{name}
+            </if>
+            <if test="level != null">
+                AND level &lt; #{level}
+            </if>
+        </where>
+    </select>
+
+    <select id="dynamicSQL1" parameterType="Map" resultType="programmer.lp.Skill">
+        SELECT * FROM skill WHERE 1 = 1
+        <if test="id != null">
+            AND id > #{id}
+        </if>
+        <if test="name != null">
+            AND name LIKE #{name}
+        </if>
+        <if test="level != null">
+            AND level &lt; #{level}
+        </if>
+    </select>
+
+    <select id="multiSelectSQL" parameterType="Map" resultType="programmer.lp.Skill">
+        SELECT *
+        FROM skill
+        WHERE 1 = 1
+          AND id > #{id}
+          AND name LIKE #{name}
+          AND level &lt; #{level}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM skill
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update2" parameterType="Map">
+        UPDATE skill
+        SET name  = #{name},
+            level = #{level}
+        WHERE id = #{id}
+    </update>
+
+    <update id="update" parameterType="programmer.lp.Skill">
+        UPDATE skill
+        SET name  = #{name},
+            level = #{level}
+        WHERE id = #{id}
+    </update>
+
+    <select id="list" parameterType="programmer.lp.Skill" resultType="programmer.lp.Skill">
+        SELECT *
+        FROM skill
+    </select>
+
+    <insert id="insert" parameterType="programmer.lp.Skill">
+        INSERT INTO skill(name, level) VALUES (#{name}, #{level})
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+</mapper>

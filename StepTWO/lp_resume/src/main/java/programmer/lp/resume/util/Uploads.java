@@ -28,8 +28,7 @@ public final class Uploads {
 //        if (null == paramFileName || "".equals(paramFileName)) {
 //            return null;   // 用户未选择文件，就不应该执行保存操作
 //        }
-        // 也可以这样判断：item.getInputStream().available() <= 0
-        // 安全起见，双重判断
+        // 也可以这样判断：
         if (item.getInputStream().available() <= 0) {
             return null;
         }
@@ -68,7 +67,7 @@ public final class Uploads {
                 requestParams.put(fieldName, fileItem.getString("UTF-8"));
             } else { // 文件
                 // 这里只会有一个图片文件
-                // 这里也可以使用fieldName，之后有时间修改
+                // TODO 这里也可以使用fieldName，之后有时间修改
                 requestParams.put("finalImage", Uploads.uploadImage(req, fileItem));
             }
         }

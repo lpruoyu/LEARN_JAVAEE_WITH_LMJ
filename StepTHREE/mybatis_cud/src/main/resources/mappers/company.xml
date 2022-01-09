@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="company">
+    <select id="list1" resultType="programmer.lp.Company">
+        SELECT *
+        FROM company
+    </select>
+    <select id="list2" resultType="programmer.lp.Company">
+        SELECT id,
+               created_time,
+               name,
+               logo,
+               website,
+               intro
+        FROM company
+    </select>
+    <select id="list3" resultType="programmer.lp.Company">
+        SELECT company.id           `id`,
+               company.created_time `createdTime`,
+               company.name         `name`,
+               company.logo         `logo`,
+               company.website      `website`,
+               company.intro        `intro`
+        FROM company
+    </select>
+</mapper>

@@ -17,9 +17,7 @@ public abstract class BaseDaoImpl<T extends BaseBean> implements BaseDao<T> {
     protected static JdbcTemplate JDBCTEMPLATE;
 
     static {
-        try (
-                InputStream is = WebsiteDaoImpl.class.getClassLoader().getResourceAsStream("druid.properties")
-        ) {
+        try (InputStream is = WebsiteDaoImpl.class.getClassLoader().getResourceAsStream("druid.properties")) {
             Properties properties = new Properties();
             properties.load(is);
             JDBCTEMPLATE = new JdbcTemplate(DruidDataSourceFactory.createDataSource(properties));

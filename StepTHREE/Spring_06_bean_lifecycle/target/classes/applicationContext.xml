@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+
+1、constructor
+2、setter
+3、BeanNameAware-setBeanName
+4、ApplicationContextAware-setApplicationContext
+5、BeanPostProcessor-postProcessBeforeInitialization
+6、InitializingBean-afterPropertiesSet
+7、XML-init-method
+8、BeanPostProcessor-postProcessAfterInitialization
+9、多个业务方法
+10、DisposableBean-destroy
+11、XML-destroy-method
+
+
+-->
+
+    <bean id="userService" class="programmer.lp.service.impl.UserServiceImpl"
+          scope="prototype"
+          p:age="21"
+          init-method="init"
+          destroy-method="dealloc"/>
+    <!-- BeanPostProcessor用来统一处理所有的bean -->
+    <bean class="programmer.lp.processor.MyBeanPostProcessor"/>
+</beans>

@@ -13,7 +13,6 @@ public class AutoGenerateCode {
     private static final String replacement = "#name#";
 
     private static final Class[] classes = {
-            Contact.class
     };
 
     private static final Map<String, String> maps = new HashMap<>();
@@ -62,7 +61,7 @@ public class AutoGenerateCode {
             contact.setComment(random.nextInt(10000) + "comment" + random.nextInt(10000));
             contact.setSubject(random.nextInt(10000) + "subject" + random.nextInt(10000));
             Date date = new Date();
-            date.setYear(random.nextInt(100) + 100);
+            date.setYear(random.nextInt(100) + 100); // 从（1900 + 100 = 2000）年开始 加上1-100的随机数
             date.setMonth(1 + random.nextInt(12));
             date.setDate(1 + random.nextInt(28));
             contact.setCreatedTime(date);

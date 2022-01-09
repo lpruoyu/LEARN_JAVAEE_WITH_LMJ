@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="experience">
+    <select id="list" resultType="programmer.lp.Experience">
+        SELECT experience.*,
+               company.id `company.id`,
+               company.created_time `company.createdTime`,
+               company.name `company.name`,
+               company.logo `company.logo`,
+               company.website `company.website`,
+               company.intro `company.intro`
+        FROM experience
+        JOIN company
+        ON experience.id = company.id
+    </select>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="experience">
+    <resultMap id="rmExperience" type="programmer.lp.mybatis_search.bean.Experience">
+        <id property="id" column="id"/>
+<!--        <result property="createdTime" column="created_time"/>-->
+<!--        <result property="job" column="job"/>-->
+<!--        <result property="intro" column="intro"/>-->
+<!--        <result property="beginDay" column="begin_day"/>-->
+<!--        <result property="endDay" column="end_day"/>-->
+        <association property="company" javaType="Company">
+            <result property="id" column="comp_id"/>
+            <result property="createdTime" column="comp_time"/>
+            <result property="name" column="comp_name"/>
+            <result property="logo" column="comp_logo"/>
+            <result property="website" column="comp_website"/>
+            <result property="intro" column="comp_intro"/>
+        </association>
+    </resultMap>
+    <select id="list" resultMap="rmExperience">
+        SELECT experience.*,
+               company.id comp_id,
+               company.created_time comp_time,
+               company.name comp_name,
+               company.logo comp_logo,
+               company.website comp_website,
+               company.intro comp_intro
+        FROM experience JOIN company
+        ON experience.id = company.id
+    </select>
+
+
+
+
+<!--    <select id="list2" resultType="programmer.lp.mybatis_search.bean.Experience">-->
+<!--        SELECT experience.*,-->
+<!--               company.id `company.id`,-->
+<!--               company.created_time `company.createdTime`,-->
+<!--               company.name `company.name`,-->
+<!--               company.logo `company.logo`,-->
+<!--               company.website `company.website`,-->
+<!--               company.intro `company.intro`-->
+<!--        FROM experience-->
+<!--        JOIN company-->
+<!--        ON experience.id = company.id-->
+<!--    </select>-->
+<!--    <select id="list1" resultType="Map">-->
+<!--        SELECT experience.*,-->
+<!--               company.id `company.id`,-->
+<!--               company.created_time `company.createdTime`,-->
+<!--               company.name `company.name`,-->
+<!--               company.logo `company.logo`,-->
+<!--               company.website `company.website`,-->
+<!--               company.intro `company.intro`-->
+<!--        FROM experience-->
+<!--        JOIN company-->
+<!--        ON experience.id = company.id-->
+<!--    </select>-->
+    <resultMap id="rmExperience3" type="programmer.lp.mybatis_search.bean.Experience">
+        <id property="id" column="id" />
+        <result property="company.id" column="comp_id"/>
+        <result property="company.createdTime" column="comp_time"/>
+        <result property="company.name" column="comp_name"/>
+        <result property="company.logo" column="comp_logo"/>
+        <result property="company.website" column="comp_website"/>
+        <result property="company.intro" column="comp_intro"/>
+    </resultMap>
+    <select id="list3" resultMap="rmExperience3">
+        SELECT experience.*,
+               company.id comp_id,
+               company.created_time comp_time,
+               company.name comp_name,
+               company.logo comp_logo,
+               company.website comp_website,
+               company.intro comp_intro
+        FROM experience
+        JOIN company
+        ON experience.id = company.id
+    </select>
+</mapper>

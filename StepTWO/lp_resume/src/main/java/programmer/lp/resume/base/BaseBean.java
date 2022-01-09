@@ -10,8 +10,10 @@ import java.util.Date;
 
 public abstract class BaseBean {
 
+    // TODO 写入博客 commons-beanutils
     static {
         // 配置BeanUtils：String -> Date
+        // 前端表单 -> 格式化字符串 -> Date
         DateConverter dateConverter = new DateConverter(null);
         dateConverter.setPatterns(new String[]{"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss"});
         ConvertUtils.register(dateConverter, Date.class);
@@ -38,7 +40,7 @@ public abstract class BaseBean {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-//    @JsonIgnore
+    //    @JsonIgnore
     public Date getCreatedTime() {
         return createdTime;
     }

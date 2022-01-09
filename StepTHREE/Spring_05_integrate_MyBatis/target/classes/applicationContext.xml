@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="db.properties"/>
+    <!-- 数据源：使用Spring提供的连接池 -->
+    <!--        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--            <property name="driverClassName" value="${dev.driverClassName}"/>-->
+    <!--            <property name="url" value="${dev.url}"/>-->
+    <!--            <property name="username" value="${dev.username}"/>-->
+    <!--            <property name="password" value="${dev.password}"/>-->
+    <!--        </bean>-->
+    <!-- 数据源：使用MyBatis自带的连接池 -->
+    <!--        <bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">-->
+    <!--            <property name="driver" value="${dev.driverClassName}"/>-->
+    <!--            <property name="url" value="${dev.url}"/>-->
+    <!--            <property name="username" value="${dev.username}"/>-->
+    <!--            <property name="password" value="${dev.password}"/>-->
+    <!--        </bean>-->
+    <!-- 数据源：使用Druid连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${dev.driverClassName}"/>
+        <property name="url" value="${dev.url}"/>
+        <property name="username" value="${dev.username}"/>
+        <property name="password" value="${dev.password}"/>
+    </bean>
+    <!-- 用于创建SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 需要设置别名的model（一般是domain领域模型）所在的包 -->
+        <property name="typeAliasesPackage" value="programmer.lp.domain"/>
+        <!-- MyBatis映射文件的路径 -->
+        <property name="mapperLocations">
+            <array>
+                <!-- <value>mappers/skill.xml</value> -->
+                <!-- <value>mappers/person.xml</value> -->
+                <!-- <value>mappers/id_card.xml</value> -->
+                <!-- <value>mappers/bank_card.xml</value> -->
+                <value>mappers/*.xml</value>
+            </array>
+        </property>
+    </bean>
+    <!-- 扫描DAO接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- SqlSessionFactoryBean的id -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- dao接口所在的包路径 -->
+        <property name="basePackage" value="programmer.lp.dao"/>
+    </bean>
+</beans>

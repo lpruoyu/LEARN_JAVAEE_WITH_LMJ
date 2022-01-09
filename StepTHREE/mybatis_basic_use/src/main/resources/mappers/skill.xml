@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace建议与表名保持一致  -->
+<mapper namespace="skill">
+
+
+    <resultMap id="rmList" type="Skill">
+        <constructor>
+            <arg column="name" javaType="String"/>
+            <arg column="level" javaType="Int"/>
+        </constructor>
+    </resultMap>
+    <select id="list" resultMap="rmList">
+        SELECT * FROM skill
+    </select>
+
+<!--    <resultMap id="rmList" type="Skill">-->
+<!--        <constructor>-->
+<!--            <arg column="level" name="level"/>-->
+<!--            <arg column="name" name="name"/>-->
+<!--        </constructor>-->
+<!--    </resultMap>-->
+<!--    <select id="list" resultMap="rmList">-->
+<!--        SELECT * FROM skill-->
+<!--    </select>-->
+
+    <!--  select标签中写SQL语句  -->
+<!--    <resultMap id="rmList" type="Skill">-->
+<!--&lt;!&ndash;        <constructor>&ndash;&gt;-->
+<!--&lt;!&ndash;            <arg column="level" javaType="Int"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <arg column="name" javaType="String"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </constructor>&ndash;&gt;-->
+<!--        <constructor>-->
+<!--            <arg column="name" javaType="String"/>-->
+<!--            <arg column="level" javaType="Int"/>-->
+<!--        </constructor>-->
+<!--    </resultMap>-->
+<!--    <select id="list" resultMap="rmList">-->
+<!--        SELECT * FROM skill-->
+<!--    </select>-->
+
+
+<!--    <select id="list" resultType="Skill">-->
+<!--        SELECT * FROM skill-->
+<!--    </select>-->
+
+<!--    <select id="get" parameterType="int" resultType="Skill">-->
+<!--        SELECT *-->
+<!--        FROM skill-->
+<!--        WHERE id = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="list2" parameterType="Map" resultType="Skill">-->
+<!--        SELECT *-->
+<!--        FROM skill-->
+<!--        WHERE id = #{id}-->
+<!--           OR name LIKE #{name}-->
+<!--           OR level > #{level}-->
+<!--    </select>-->
+
+<!--    <select id="list3" parameterType="Skill"-->
+<!--            resultType="Skill">-->
+<!--        SELECT *-->
+<!--        FROM skill-->
+<!--        WHERE id = #{id}-->
+<!--           OR name LIKE #{name}-->
+<!--           OR level > #{level}-->
+<!--    </select>-->
+
+    <!--    <resultMap id="rmSkill" type="Skill">-->
+    <!--        &lt;!&ndash;主键&ndash;&gt;-->
+    <!--        <id property="id" column="id"/>-->
+    <!--&lt;!&ndash;  可以不写  &ndash;&gt;-->
+    <!--        &lt;!&ndash;<result property="name" column="name"/>&ndash;&gt;-->
+    <!--        &lt;!&ndash;<result property="level" column="level"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;  xx_xx 必须写才成xxXx才能被识别  &ndash;&gt;-->
+    <!--        <result property="createdTime" column="created_time"/>-->
+    <!--    </resultMap>-->
+
+    <!--    <select id="list" resultMap="rmSkill">-->
+    <!--        SELECT * FROM skill-->
+    <!--    </select>-->
+</mapper>

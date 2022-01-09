@@ -29,14 +29,11 @@ public class Main {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, pswd);
             ResultSet resultSet = preparedStatement.executeQuery();
-
-
             if (resultSet.next()) {
                 System.out.println("登录成功！");
             } else {
                 System.out.println("登录失败！");
             }
-
             // ResultSet没法使用try-with-resources
             // 所以ResultSet需要关闭
             resultSet.close();

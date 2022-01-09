@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <context:property-placeholder location="db.properties"/>-->
+
+<!--    <bean id="testUsername" class="programmer.lp.domain.TestUsername">-->
+<!--        <property name="userName" value="${username}"/>-->
+<!--    </bean>-->
+
+    <!--    <bean id="dog" class="programmer.lp.domain.Dog" scope="prototype"/>-->
+
+    <!--    <bean id="person1" class="programmer.lp.domain.Person">-->
+    <!--        <property name="dog">-->
+    <!--            <bean class="programmer.lp.domain.Dog"/>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="person2" class="programmer.lp.domain.Person">-->
+    <!--        <property name="dog">-->
+    <!--            <bean class="programmer.lp.domain.Dog"/>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+</beans>
+
+
+        <!-- scope的默认值为singleton，id相同时，在同一个IoC容器中永远只有一个实例 -->
+        <!-- 并不是单例设计模式 -->
+        <!-- <bean id="person" class="programmer.lp.domain.Person" lazy-init="true" /> -->
+        <!--    <bean id="person" class="programmer.lp.domain.Person" scope="prototype" />-->

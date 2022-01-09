@@ -1,8 +1,10 @@
 package programmer.lp.resume.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.beanutils.BeanUtils;
 import programmer.lp.resume.base.BaseServlet;
 import programmer.lp.resume.bean.Contact;
+import programmer.lp.resume.service.ContactService;
 import programmer.lp.resume.service.UserService;
 import programmer.lp.resume.service.WebsiteService;
 import programmer.lp.resume.service.impl.UserServiceImpl;
@@ -13,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/contact/*")
 public class ContactServlet extends BaseServlet<Contact> {
@@ -20,16 +24,37 @@ public class ContactServlet extends BaseServlet<Contact> {
     private WebsiteService websiteService = new WebsiteServiceImpl();
     private UserService userService = new UserServiceImpl();
 
+    public void read(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            Map<String, Object> map = new HashMap<>();
+            if (((ContactService) service).read(Integer.valueOf(req.getParameter("id")))) {
+                map.put("success", true);
+            } else {
+                map.put("success", false);
+            }
+            resp.setContentType("text/json; charset=UTF-8");
+            resp.getWriter().write(new ObjectMapper().writeValueAsString(map));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void front(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("contacts", service.list());
-        req.setAttribute("user", userService.list().get(0));
-        req.setAttribute("website", websiteService.list().get(0));
-        forward(req, resp, "front/contact.jsp");
+        try {
+            req.setAttribute("contacts", service.list());
+            req.setAttribute("user", userService.list().get(0));
+            req.setAttribute("website", websiteService.list().get(0));
+            forward(req, resp, "front/contact.jsp");
+        } catch (Exception e) {
+            forwardError(e, req, resp);
+        }
     }
 
     public void admin(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            req.setAttribute("contacts", service.list());
+            Contact.Search search = new Contact.Search();
+            BeanUtils.populate(search, req.getParameterMap());
+            req.setAttribute("result", ((ContactService) service).list(search));
             forward(req, resp, "admin/contact.jsp");
         } catch (Exception e) {
             forwardError(e, req, resp);

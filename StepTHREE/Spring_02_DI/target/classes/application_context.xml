@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="hobby" class="programmer.lp.domain.Hobby">
+        <property name="info" value="编程改变世界"/>
+        <property name="time">
+            <bean class="java.util.Date">
+                <property name="year" value="121"/>
+                <property name="month" value="7"/>
+                <property name="date" value="20"/>
+            </bean>
+        </property>
+        <property name="hobbies">
+            <list>
+                <value>编程</value>
+                <value>coding</value>
+                <value>programming</value>
+            </list>
+        </property>
+    </bean>
+</beans>
+
+

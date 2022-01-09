@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="screen" class="programmer.lp.domain.Screen">
+        <constructor-arg>
+            <list>
+                <value>Screen info 1</value>
+                <value>Screen info 2</value>
+                <value>Screen info 3</value>
+                <value>Screen info 4</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="screen1" class="programmer.lp.domain.Screen">
+        <constructor-arg index="1" value="6"/>
+        <constructor-arg index="0" value="北京"/>
+    </bean>
+    <bean id="phone" class="programmer.lp.domain.Phone">
+        <constructor-arg value="mi"/>
+        <constructor-arg value="9999.99"/>
+        <constructor-arg>
+            <ref bean="screen"/>
+        </constructor-arg>
+    </bean>
+
+    <!--    <bean id="dog" class="programmer.lp.domain.Dog"/>-->
+    <!--    <bean id="person5" class="programmer.lp.domain.Person">-->
+    <!--        <constructor-arg type="java.lang.String" value="lpruoyu"/>-->
+    <!--        <constructor-arg type="int" value="10"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="person4" class="programmer.lp.domain.Person">-->
+    <!--        <property name="mapDogs">-->
+    <!--            <map>-->
+    <!--                <entry key="xx">-->
+    <!--                    <bean class="programmer.lp.domain.Dog">-->
+    <!--                        <property name="name" value="小x"/>-->
+    <!--                        <property name="age" value="10"/>-->
+    <!--                    </bean>-->
+    <!--                </entry>-->
+    <!--                <entry key="yy">-->
+    <!--                    <bean class="programmer.lp.domain.Dog">-->
+    <!--                        <property name="name" value="小y"/>-->
+    <!--                        <property name="age" value="11"/>-->
+    <!--                    </bean>-->
+    <!--                </entry>-->
+    <!--                <entry key="zz">-->
+    <!--                    <bean class="programmer.lp.domain.Dog">-->
+    <!--                        <property name="name" value="小z"/>-->
+    <!--                        <property name="age" value="12"/>-->
+    <!--                    </bean>-->
+    <!--                </entry>-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!--    <bean id="person1" class="programmer.lp.domain.Person">-->
+    <!--        <property name="name" value="lpruoyu"/>-->
+    <!--        <property name="age" value="21"/>-->
+    <!--        <property name="dog" ref="dog"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="person2" class="programmer.lp.domain.Person">-->
+    <!--        <property name="name" value="hahaha"/>-->
+    <!--        <property name="age" value="21"/>-->
+    <!--        <property name="dog">-->
+    <!--            <ref bean="dog"/>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!--    <bean id="person3" class="programmer.lp.domain.Person">-->
+    <!--        <property name="name" value="lalaya"/>-->
+    <!--        <property name="age" value="20"/>-->
+    <!--        <property name="dog">-->
+    <!--            <bean class="programmer.lp.domain.Dog"/>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+</beans>
+
+

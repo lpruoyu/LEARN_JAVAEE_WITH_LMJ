@@ -11,7 +11,7 @@ public final class Strings {
     }
 
     public static String underLineCase(final String source) {
-        if (null == source || "".equals(source)) return source;
+        if (isNull(source)) return source;
 
         final StringBuilder sb = new StringBuilder();
         sb.append(Character.toLowerCase(source.charAt(0)));
