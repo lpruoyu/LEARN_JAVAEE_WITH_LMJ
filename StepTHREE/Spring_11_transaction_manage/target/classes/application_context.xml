@@ -20,37 +20,22 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="programmer.lp.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
+    <!-- 事务管理器 -->
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="druid"/>
     </bean>
-
+    <!-- 附加代码 -->
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
-            <!--            <tx:method name="add*"/>-->
-            <!--            <tx:method name="delete*"/>-->
-            <!--            <tx:method name="update*"/>-->
-            <!--            <tx:method name="get*" propagation="SUPPORTS"/>-->
-            <!--            <tx:method name="list*" propagation="SUPPORTS"/>-->
-            <!--            <tx:method name="log*" propagation="REQUIRES_NEW"/>-->
-
-            <!--            <tx:method name="test*" propagation="REQUIRED" />-->
-
-            <tx:method name="*"
-                       timeout="10"
-                       no-rollback-for="programmer.lp.error.MyError"
-                       rollback-for="programmer.lp.exception.MyException"/>
-            <!--            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>-->
-            <!--            <tx:method name="list*" propagation="SUPPORTS" read-only="true"/>-->
-            <!--            <tx:method name="log*" propagation="REQUIRES_NEW"/>-->
+            <tx:method name="test*" propagation="SUPPORTS"/>
         </tx:attributes>
     </tx:advice>
-
+    <!-- 切面 -->
     <aop:config>
-<!--        <aop:pointcut id="pc" expression="execution(* programmer.lp.service..*.*(..))"/>-->
         <aop:pointcut id="pc" expression="within(programmer.lp.service..*)"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
     </aop:config>

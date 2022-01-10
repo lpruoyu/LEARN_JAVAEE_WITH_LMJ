@@ -33,6 +33,7 @@ public class MainTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         SkillService skillService = ctx.getBean("skillService", SkillService.class);
         skillService.delete(10);
+//        skillService.other();
     }
 
     @Test
