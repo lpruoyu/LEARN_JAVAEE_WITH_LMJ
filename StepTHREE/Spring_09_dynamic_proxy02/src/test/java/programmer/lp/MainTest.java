@@ -24,8 +24,16 @@ public class MainTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         SkillService skillService = ctx.getBean("skillService", SkillService.class);
         UserService userService = ctx.getBean("userService", UserService.class);
-        userService.login("xx", "yz");
+
+//        skillService.toString();
         skillService.delete(10);
+//        userService.login("xx", "yz");
+//        skillService.delete(10);
+// 使用JDK/CGLib生成的代理对象，会代理目标对象的所有方法
+//        userService.toString();
+//        skillService.toString();
+//        userService.hashCode();
+//        skillService.hashCode();
     }
 
     @Test

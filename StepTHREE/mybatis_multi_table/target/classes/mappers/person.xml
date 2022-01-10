@@ -10,12 +10,15 @@
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <association property="idCard" javaType="IdCard"
+                     fetchType="lazy"
                      select="id_card.getByPersonId"
                      column="id" />
         <collection property="bankCards" ofType="BankCard"
+                    fetchType="lazy"
                     select="bank_card.listByPersonId"
                     column="id"  />
         <collection property="jobs" ofType="Job"
+                    fetchType="lazy"
                     select="job.listByPersonId"
                     column="id"  />
     </resultMap>

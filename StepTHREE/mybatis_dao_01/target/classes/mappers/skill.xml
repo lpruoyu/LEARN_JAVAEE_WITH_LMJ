@@ -6,7 +6,10 @@
     <sql id="sqlListAll">
         SELECT id, name, level, created_time FROM skill
     </sql>
-    <insert id="add" parameterType="Skill" useGeneratedKeys="true" keyProperty="id">
+    <insert id="add"
+            parameterType="Skill"
+            useGeneratedKeys="true"
+            keyProperty="id">
         INSERT INTO skill(name, level) VALUES(#{name}, #{level})
     </insert>
     <delete id="remove" parameterType="Int">

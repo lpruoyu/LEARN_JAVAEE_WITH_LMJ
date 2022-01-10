@@ -7,11 +7,11 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="db.properties"/>
+<!--    <context:property-placeholder location="db.properties"/>-->
 
-    <bean id="testUsername" class="programmer.lp.domain.TestUsername">
-        <property name="userName" value="${username}"/>
-    </bean>
+<!--    <bean id="testUsername" class="programmer.lp.domain.TestUsername">-->
+<!--        <property name="userName" value="${username}"/>-->
+<!--    </bean>-->
 
     <!--    <bean id="dog" class="programmer.lp.domain.Dog" scope="prototype"/>-->
 

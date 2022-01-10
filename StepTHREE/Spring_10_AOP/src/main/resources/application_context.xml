@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 附加代码 -->
+    <bean id="logInterceptor" class="programmer.lp.advice.LogInterceptor"/>
+    <!-- 切面 -->
+    <aop:config>
+        <!-- 切入点：给哪些类的哪些方法增加附加代码？ -->
+        <!-- execution(* *(..)) 代表所有类的所有方法都会被切入 -->
+        <!--        <aop:pointcut id="pc" expression="execution(* *(..))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public boolean programmer.lp.service.UserService.login(String, String))"/>-->
+<!--                <aop:pointcut id="pc" expression="within(programmer.lp.service.impl.UserServiceImpl)"/>-->
+                <aop:pointcut id="pc" expression="within(programmer.lp.service.impl.UserServiceImpl)"/>
+<!--                <aop:pointcut id="pc" expression="within(programmer.lp.service..*)"/>-->
+
+        <!--        <aop:pointcut id="pc" expression="args(..)"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* *(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="args(String, String)"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* *.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* log*(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* *log(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* *in(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* log*(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* *Service.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public boolean programmer.lp.service..*.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public boolean programmer.lp.service.*.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public boolean *.UserService.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(* programmer.lp.service.UserService.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public * programmer.lp.service.UserService.login(String, String))"/>-->
+        <!--        <aop:pointcut id="pc" expression="execution(public boolean programmer.lp.service.UserService.login(..))"/>-->
+        <!-- 附加代码 -->
+        <aop:advisor advice-ref="logInterceptor" pointcut-ref="pc"/>
+    </aop:config>
+
+    <!--    &lt;!&ndash; 附加代码 &ndash;&gt;-->
+    <!--    <bean id="logAdvice" class="programmer.lp.advice.LogAdvice"/>-->
+    <!--    &lt;!&ndash; 切面 &ndash;&gt;-->
+    <!--    <aop:config>-->
+    <!--        &lt;!&ndash; 切入点：给哪些类的哪些方法增加附加代码？ &ndash;&gt;-->
+    <!--        &lt;!&ndash; execution(* *(..)) 代表所有类的所有方法都会被切入 &ndash;&gt;-->
+    <!--        <aop:pointcut id="pc" expression="execution(* *(..))"/>-->
+    <!--        &lt;!&ndash; 附加代码 &ndash;&gt;-->
+    <!--        <aop:advisor advice-ref="logAdvice" pointcut-ref="pc"/>-->
+    <!--    </aop:config>-->
+
+    <bean id="userService" class="programmer.lp.service.impl.UserServiceImpl"/>
+    <bean id="skillService" class="programmer.lp.service.SkillService"/>
+
+</beans>
+

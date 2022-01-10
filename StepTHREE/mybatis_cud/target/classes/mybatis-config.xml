@@ -9,8 +9,14 @@
     </settings>
     <typeAliases>
         <typeAlias type="programmer.lp.Skill" alias="skill"/>
-        <typeAlias type="programmer.lp.DruidDataSourceFactory" alias="druid"/>
+        <typeAlias type="programmer.lp.common.DruidDataSourceFactory" alias="druid"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- true代表分页合理化：pageNum <= 0就会自动获取第1页，pageNum > pages就会自动获取最后1页 -->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

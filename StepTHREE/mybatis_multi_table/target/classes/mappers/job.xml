@@ -5,8 +5,8 @@
 <mapper namespace="job">
     <select id="listByPersonId" parameterType="Int" resultType="Job">
         SELECT id, name, duty FROM job
-                                       JOIN person_job
-                                            ON person_job.job_id = id AND person_job.person_id = #{personId}
+        JOIN person_job
+        ON person_job.job_id = id AND person_job.person_id = #{personId}
     </select>
     <sql id="sqlListAll">
         SELECT job.id      job_id,
