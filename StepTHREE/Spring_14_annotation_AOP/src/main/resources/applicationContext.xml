@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="programmer.lp"/>
+
+    <aop:aspectj-autoproxy/>
+
+    <bean id="myInterceptor" class="programmer.lp.old.aop.MyMethodInterceptor"/>
+
+<!--    <aop:config>-->
+<!--        <aop:advisor advice-ref="myInterceptor" pointcut="programmer.lp.old.aop.DefaultAspect.pointcut()"/>-->
+<!--    </aop:config>-->
+
+    <aop:config>
+        <aop:pointcut id="pc" expression="programmer.lp.old.aop.DefaultAspect.pointcut()"/>
+        <aop:advisor advice-ref="myInterceptor" pointcut-ref="pc"/>
+    </aop:config>
+
+</beans>

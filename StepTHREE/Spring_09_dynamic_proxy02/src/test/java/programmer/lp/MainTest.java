@@ -3,9 +3,9 @@ package programmer.lp;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import programmer.lp.service.SkillService;
-import programmer.lp.service.UserService;
-import programmer.lp.service.impl.UserServiceImpl;
+import programmer.lp.old.service.SkillService;
+import programmer.lp.old.service.UserService;
+import programmer.lp.old.service.impl.UserServiceImpl;
 
 public class MainTest {
 

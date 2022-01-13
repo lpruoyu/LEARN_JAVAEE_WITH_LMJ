@@ -1,6 +1,6 @@
 package programmer.lp.servlet;
 
-import programmer.lp.service.StudentService;
+import programmer.lp.old.service.StudentService;
 
 public class StudentServlet {
     private StudentService service;

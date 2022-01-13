@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    <context:component-scan base-package="programmer.lp">-->
+    <!--        &lt;!&ndash; expression中：切入点表达式within中写的东西 &ndash;&gt;-->
+    <!--        <context:include-filter type="aspectj" expression="programmer.lp.service.impl..*"/>-->
+    <!--        &lt;!&ndash; <context:include-filter type="assignable" expression="programmer.lp.configuration.MainConfiguration"/>&ndash;&gt;-->
+    <!--        &lt;!&ndash; &ndash;&gt;-->
+    <!--        &lt;!&ndash; <context:exclude-filter type="assignable" expression="programmer.lp.domain.Dog"/>&ndash;&gt;-->
+    <!--        &lt;!&ndash; <context:exclude-filter type="assignable" expression="programmer.lp.domain.Person"/>&ndash;&gt;-->
+    <!--    </context:component-scan>-->
+
+    <context:component-scan base-package="programmer.lp" use-default-filters="false">
+        <!--        <context:exclude-filter type="assignable" expression="programmer.lp.domain.Person"/>-->
+        <!--        <context:exclude-filter type="assignable" expression="programmer.lp.domain.Dog"/>-->
+
+        <!--        <context:include-filter type="assignable" expression="programmer.lp.domain.Person"/>-->
+        <!--        <context:include-filter type="assignable" expression="programmer.lp.domain.Dog"/>-->
+
+        <!--        <context:exclude-filter type="aspectj" expression="programmer.lp.demo.*"/>-->
+        <!--        <context:include-filter type="aspectj" expression="programmer.lp.service..*"/>-->
+
+        <!--        <context:exclude-filter type="regex" expression=".*My.*"/>-->
+
+        <!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+
+<!--        <context:exclude-filter type="custom" expression="programmer.lp.filter.MyTypeFilter"/>-->
+<!--        <context:include-filter type="custom" expression="programmer.lp.filter.MyTypeFilter"/>-->
+    </context:component-scan>
+
+</beans>

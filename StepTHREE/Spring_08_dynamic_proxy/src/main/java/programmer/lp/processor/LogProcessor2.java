@@ -12,7 +12,7 @@ public class LogProcessor2 implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (!bean.getClass().getName().startsWith("programmer.lp.service.")) {
+        if (!bean.getClass().getName().startsWith("programmer.lp.old.service.")) {
             return bean;
         }
         Enhancer enhancer = new Enhancer();

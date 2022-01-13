@@ -10,27 +10,26 @@
     <!--    <aop:config>-->
     <!--        <aop:pointcut   id="pc1"-->
     <!--                        expression=-->
-    <!--                        "execution(public boolean programmer.lp.service.UserService.login(String, String))-->
+    <!--                        "execution(public boolean programmer.lp.old.service.UserService.login(String, String))-->
     <!--                         ||-->
-    <!--                         execution(* programmer.lp.service.SkillService.delete(..))"/>-->
+    <!--                         execution(* programmer.lp.old.service.SkillService.delete(..))"/>-->
     <!--        <aop:advisor advice-ref="logInterceptor" pointcut-ref="pc1"/>-->
     <!--    </aop:config>-->
 
 <!--    <aop:config>-->
 <!--        <aop:pointcut id="pc"-->
-<!--                      expression="within(programmer.lp.service.impl.UserServiceImpl) and args(String, String)"/>-->
+<!--                      expression="within(programmer.lp.old.service.impl.UserServiceImpl) and args(String, String)"/>-->
 <!--        <aop:advisor advice-ref="logInterceptor" pointcut-ref="pc"/>-->
 <!--    </aop:config>-->
 
 
     <aop:config>
-        <aop:pointcut id="pc"
-                      expression="!execution(* logout(..))"/>
+        <aop:pointcut id="pc" expression="within(programmer.lp.service..*)"/>
         <aop:advisor advice-ref="logInterceptor" pointcut-ref="pc"/>
     </aop:config>
 
-    <bean id="userService" class="programmer.lp.service.impl.UserServiceImpl"/>
-    <bean id="skillService" class="programmer.lp.service.SkillService"/>
+    <bean id="userService" class="programmer.lp.old.service.impl.UserServiceImpl"/>
+    <bean id="skillService" class="programmer.lp.old.service.SkillService"/>
 
 </beans>
 

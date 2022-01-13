@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import programmer.lp.domain.Skill;
-import programmer.lp.service.SkillService;
+import programmer.lp.old.service.SkillService;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package programmer.lp.factory;
 
 import programmer.lp.dao.StudentDao;
-import programmer.lp.service.StudentService;
+import programmer.lp.old.service.StudentService;
 
 import java.io.InputStream;
 import java.util.Properties;

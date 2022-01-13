@@ -14,7 +14,7 @@ public class LogProcessor2 implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         // 需要考虑清楚哪些bean需要代理、哪些bean不需要代理
         // 并写出相应的控制代码
-        if (!bean.getClass().getName().startsWith("programmer.lp.service.")) {
+        if (!bean.getClass().getName().startsWith("programmer.lp.old.service.")) {
             return bean;
         }
         Enhancer enhancer = new Enhancer();

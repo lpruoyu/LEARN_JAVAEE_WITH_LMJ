@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bean="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean:property-placeholder location="db.properties"/>
+
+    <bean id="druid" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${dev.driverClassName}"/>
+        <property name="url" value="${dev.url}"/>
+        <property name="username" value="${dev.username}"/>
+        <property name="password" value="${dev.password}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="druid"/>
+        <property name="typeAliasesPackage" value="programmer.lp.domain"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="programmer.lp.dao"/>
+    </bean>
+
+    <context:component-scan base-package="programmer.lp"/>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druid"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <bean id="skillService" class="programmer.lp.service.impl.SkillServiceImpl">
+        <property name="dao" ref="skillDao"/>
+    </bean>
+
+    <!--    <tx:advice id="txAdvice" transaction-manager="txManager">-->
+    <!--        <tx:attributes>-->
+    <!--            <tx:method name="*"/>-->
+    <!--        </tx:attributes>-->
+    <!--    </tx:advice>-->
+
+    <!--    <aop:config>-->
+    <!--        <aop:pointcut id="pc" expression="within(programmer.lp.service..*)"/>-->
+    <!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>-->
+    <!--    </aop:config>-->
+
+</beans>

@@ -6,7 +6,11 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
+
     <context:property-placeholder location="db.properties"/>
+
+
+
     <!-- 数据源：使用Spring提供的连接池 -->
     <!--        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
     <!--            <property name="driverClassName" value="${dev.driverClassName}"/>-->

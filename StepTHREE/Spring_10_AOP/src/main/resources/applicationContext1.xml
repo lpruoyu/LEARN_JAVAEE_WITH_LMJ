@@ -11,7 +11,7 @@
         <aop:advisor advice-ref="logInterceptor" pointcut-ref="pc"/>
     </aop:config>
 
-    <bean id="userService" class="programmer.lp.service.impl.UserServiceImpl"/>
+    <bean id="userService" class="programmer.lp.old.service.impl.UserServiceImpl"/>
 
 </beans>
 

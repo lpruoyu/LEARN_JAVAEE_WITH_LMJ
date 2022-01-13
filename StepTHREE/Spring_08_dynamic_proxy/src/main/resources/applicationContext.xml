@@ -6,8 +6,8 @@
 <!--    <bean class="programmer.lp.processor.LogProcessor"/>-->
     <bean class="programmer.lp.processor.LogProcessor2"/>
 
-    <bean id="userService" class="programmer.lp.service.impl.UserServiceImpl"/>
-    <bean id="skillService" class="programmer.lp.service.SkillService"/>
+    <bean id="userService" class="programmer.lp.old.service.impl.UserServiceImpl"/>
+    <bean id="skillService" class="programmer.lp.old.service.SkillService"/>
 
 </beans>
 
