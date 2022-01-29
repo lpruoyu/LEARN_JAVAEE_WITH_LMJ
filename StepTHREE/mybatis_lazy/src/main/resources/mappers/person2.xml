@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="person">
+<mapper namespace="person2">
     <sql id="sqlListAll">
-        SELECT person.id       person_id,
-               person.name     person_name,
+        SELECT person2.id       person_id,
+               person2.name     person_name,
                id_card.id      id_card_id,
                id_card.no      id_card_no,
                id_card.address id_card_address
-        FROM person
-        JOIN id_card ON id_card.person_id = person.id
+        FROM person2
+        JOIN id_card ON id_card.person_id = person2.id
     </sql>
     <resultMap id="rmList" type="Person">
         <id property="id" column="person_id"/>
@@ -30,6 +30,6 @@
                     select="job.listByPersonId"/>
     </resultMap>
     <select id="get" resultMap="rmList">
-        <include refid="sqlListAll"/> WHERE person.id = #{personId}
+        <include refid="sqlListAll"/> WHERE person2.id = #{personId}
     </select>
 </mapper>

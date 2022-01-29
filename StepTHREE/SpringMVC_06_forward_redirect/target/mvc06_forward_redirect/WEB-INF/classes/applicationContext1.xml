@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 使用SpringMVC时，location必须加上classpath: -->
+    <context:property-placeholder location="classpath:forward-jsp.properties"/>
+    <context:component-scan base-package="programmer.lp"/>
+    <mvc:annotation-driven>
+        <mvc:path-matching suffix-pattern="false"/>
+    </mvc:annotation-driven>
+    <mvc:default-servlet-handler/>
+    <!--    <mvc:view-controller path="/jsp6" view-name="/WEB-INF/page/jsp/jsp6.jsp"/>-->
+    <!--    <mvc:view-controller path="/jsp6-redirect" view-name="redirect:/public/jsp6.jsp"/>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
+        <property name="prefix" value="/WEB-INF/page/jsp"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="0"/>
+        <property name="prefix" value="/public"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

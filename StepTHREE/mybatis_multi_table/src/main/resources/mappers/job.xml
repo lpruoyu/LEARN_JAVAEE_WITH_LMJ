@@ -12,11 +12,11 @@
         SELECT job.id      job_id,
                job.name    job_name,
                job.duty    job_duty,
-               person.id   person_id,
-               person.name person_name
+               person2.id   person_id,
+               person2.name person_name
         FROM job
         LEFT JOIN person_job ON job.id = person_job.job_id
-        LEFT JOIN person ON person.id = person_job.person_id
+        LEFT JOIN person2 ON person2.id = person_job.person_id
     </sql>
     <resultMap id="rmJob" type="Job">
         <id property="id" column="job_id"/>

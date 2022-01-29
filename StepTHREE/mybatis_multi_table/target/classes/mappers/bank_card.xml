@@ -7,16 +7,16 @@
         SELECT bank_card.id bank_card_id,
                bank_card.no bank_card_no,
                bank_card.amout bank_card_amout,
-               person.id person_id,
-               person.name person_name
-        FROM bank_card LEFT JOIN person
-        ON bank_card.person_id = person.id
+               person2.id person_id,
+               person2.name person_name
+        FROM bank_card LEFT JOIN person2
+        ON bank_card.person_id = person2.id
     </sql>
     <resultMap id="rmBankCard" type="BankCard">
         <id property="id" column="bank_card_id"/>
         <result property="no" column="bank_card_no"/>
         <result property="amout" column="bank_card_amout"/>
-        <association property="person" javaType="Person">
+        <association property="person2" javaType="Person">
             <id property="id" column="person_id"/>
             <result property="name" column="person_name"/>
         </association>

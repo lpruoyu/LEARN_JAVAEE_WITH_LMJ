@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <context:component-scan base-package="programmer.lp"/>
+    <mvc:annotation-driven>
+        <mvc:path-matching suffix-pattern="false"/>
+    </mvc:annotation-driven>
+    <mvc:default-servlet-handler/>
+    <mvc:interceptors>
+        <!-- <mvc:interceptor/> 可以配置多个 -->
+        <mvc:interceptor>
+
+            <!-- /**代表DispatcherServlet能够匹配到的所有请求都会被拦截 -->
+            <!-- /*：不包括子目录 -->
+            <!-- /**：包括子目录 -->
+            <mvc:mapping path="/**"/>
+
+            <!-- /education/**代表拦截以/education为开头的请求 -->
+            <!-- <mvc:mapping path="/education/**"/> -->
+            <!-- <mvc:mapping path="/award/**"/> -->
+
+            <!-- 推荐将静态资源都放在同一个目录，然后统一不拦截 -->
+            <mvc:exclude-mapping path="/assets/**"/>
+
+            <!-- /**/*.html不会拦截所有的html文件（以.html为结尾的文件） -->
+            <!-- <mvc:exclude-mapping path="/**/*.html"/>-->
+            <!-- <mvc:exclude-mapping path="/**/*.css"/>-->
+            <!-- <mvc:exclude-mapping path="/**/*.js"/>-->
+            <!-- <mvc:exclude-mapping path="/**/*.png"/>-->
+            <!-- <mvc:exclude-mapping path="/**/*.jpg"/>-->
+
+            <!-- 注意： <mvc:mapping/>、<mvc:exclude-mapping/>都可以写多个 -->
+
+            <bean class="programmer.lp.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

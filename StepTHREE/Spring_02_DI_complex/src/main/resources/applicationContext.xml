@@ -36,9 +36,9 @@
         <!--        <constructor-arg name="name" value="LPRUOYU"/>-->
         <!--    </bean>-->
 
-        <!--    <bean id="person" class="programmer.lp.domain.Person" p:age="21" p:name="lpruoyu" />-->
+        <!--    <bean id="person2" class="programmer.lp.domain.Person" p:age="21" p:name="lpruoyu" />-->
         <!--    <bean id="dog" class="programmer.lp.domain.Dog" p:name="史努比" p:nickName="小比"/>-->
-        <!--    <bean id="person" class="programmer.lp.domain.Person" p:dog-ref="dog"/>-->
+        <!--    <bean id="person2" class="programmer.lp.domain.Person" p:dog-ref="dog"/>-->
 
         <!--    <bean id="connection" class="programmer.lp.obj.ConnectionFactoryBean">-->
         <!--        <property name="url" value="jdbc:mysql://localhost:3306/bookstore"/>-->

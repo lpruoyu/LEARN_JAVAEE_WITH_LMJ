@@ -32,5 +32,5 @@
 
         <!-- scope的默认值为singleton，id相同时，在同一个IoC容器中永远只有一个实例 -->
         <!-- 并不是单例设计模式 -->
-        <!-- <bean id="person" class="programmer.lp.domain.Person" lazy-init="true" /> -->
-        <!--    <bean id="person" class="programmer.lp.domain.Person" scope="prototype" />-->
+        <!-- <bean id="person2" class="programmer.lp.domain.Person" lazy-init="true" /> -->
+        <!--    <bean id="person2" class="programmer.lp.domain.Person" scope="prototype" />-->

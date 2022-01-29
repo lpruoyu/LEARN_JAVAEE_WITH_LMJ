@@ -41,7 +41,7 @@
         <property name="mapperLocations">
             <array>
                 <!-- <value>mappers/skill.xml</value> -->
-                <!-- <value>mappers/person.xml</value> -->
+                <!-- <value>mappers/person2.xml</value> -->
                 <!-- <value>mappers/id_card.xml</value> -->
                 <!-- <value>mappers/bank_card.xml</value> -->
                 <value>mappers/*.xml</value>

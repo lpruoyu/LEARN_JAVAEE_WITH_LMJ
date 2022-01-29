@@ -28,5 +28,5 @@
     <bean id="person2" class="programmer.lp.domain.Person" p:age="10" p:birthday="2001_7_3"/>
     <bean id="person3" class="programmer.lp.domain.Person" p:birthday="1111年11月11日"/>
 
-    <bean id="person" class="programmer.lp.domain.Person" p:birthday="2222/12/22"/>
+    <bean id="person2" class="programmer.lp.domain.Person" p:birthday="2222/12/22"/>
 </beans>

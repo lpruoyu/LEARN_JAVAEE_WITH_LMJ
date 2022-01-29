@@ -10,16 +10,16 @@
         SELECT id_card.id      id_card_id,
                id_card.no      id_card_no,
                id_card.address id_card_address,
-               person.id       person_id,
-               person.name     person_name
-        FROM id_card JOIN person
-        ON id_card.person_id = person.id
+               person2.id       person_id,
+               person2.name     person_name
+        FROM id_card JOIN person2
+        ON id_card.person_id = person2.id
     </sql>
     <resultMap id="rmList" type="IdCard">
         <id property="id" column="id_card_id"/>
         <result property="no" column="id_card_no"/>
         <result property="address" column="id_card_address"/>
-        <association property="person" javaType="Person">
+        <association property="person2" javaType="Person">
             <id property="id" column="person_id"/>
             <result property="name" column="person_name"/>
         </association>

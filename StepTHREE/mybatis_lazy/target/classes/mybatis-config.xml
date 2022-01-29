@@ -28,7 +28,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mappers/person.xml"/>
+        <mapper resource="mappers/person2.xml"/>
         <mapper resource="mappers/bank_card.xml"/>
         <mapper resource="mappers/id_card.xml"/>
         <mapper resource="mappers/job.xml"/>
