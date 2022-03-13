@@ -101,15 +101,25 @@
                 <directory>src/main/resources</directory>
             </resource>
             <!-- 第二个位置 -->
+            <!--            <resource>-->
+            <!--                <directory>src/main/java</directory>-->
+            <!--&lt;!&ndash;                <includes>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <include>**/*.properties</include>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <include>**/*.xml</include>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </includes>&ndash;&gt;-->
+            <!--                <excludes>-->
+            <!--                    <exclude>**/*.java</exclude>-->
+            <!--                </excludes>-->
+            <!--            </resource>-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
-<!--                <excludes>-->
-<!--                    <exclude>**/*.java</exclude>-->
-<!--                </excludes>-->
+                <!--                <excludes>-->
+                <!--                    <exclude>**/*.java</exclude>-->
+                <!--                </excludes>-->
             </resource>
         </resources>
     </build>
