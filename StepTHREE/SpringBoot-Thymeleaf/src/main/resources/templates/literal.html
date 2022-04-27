@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>literal</title>
+</head>
+<body>
+
+<!----------字符串------------>
+
+<!-- 解析失败：有特殊字符“空格” -->
+<!--<div th:text="I Love Coding"></div>-->
+
+<div th:text="ILoveCoding"></div>
+
+<!-- 如果有特殊字符“空格”，那么使用 '' 或者 || -->
+<div th:text="'I Love Coding'"></div>
+<div th:text="|I Love Coding|"></div>
+
+<div th:text="${name} + ' Love Coding'"></div>
+<div th:text="${name} + | Love Coding|"></div>
+
+<!-- '' 里面不可以使用${} -->
+<!-- || 里面可以使用${} -->
+<div th:text="'${name} Love Coding'"></div>
+<div th:text="|${name} Love Coding|"></div>
+
+<div th:text="${name} + ' realy ' + Love + | Coding|"></div>
+
+<!----------数字------------>
+
+<div th:text="20"></div>
+<div th:text="20 * 2"></div>
+<div th:text="${age} % 3"></div>
+
+<!-----------布尔值----------->
+<div th:text="${age} == 20"></div>
+<div th:text="20 >= 3"></div>
+
+<div>[['I love coding' + ${age}]]</div>
+<div>[[|lpruoyu${name}${age}|]]</div>
+<div>[[${age}]]</div>
+<div>[[${name}]]</div>
+
+</body>
+</html>

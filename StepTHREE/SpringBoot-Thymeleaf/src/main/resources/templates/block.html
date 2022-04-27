@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>block</title>
+</head>
+<body>
+
+<!--<div th:each="person : ${persons}">-->
+<!--    <div th:text="${person.age}"></div>-->
+<!--    <div th:text="${person.name}"></div>-->
+<!--</div>-->
+
+<th:block th:each="person : ${persons}">
+    <div th:text="${person.age}"></div>
+    <div th:text="${person.name}"></div>
+</th:block>
+
+<hr>
+
+<!--/*/ <th:block th:each="person : ${persons}"> /*/-->
+    <div th:text="${person.age}"></div>
+    <div th:text="${person.name}"></div>
+<!--/*/ </th:block> /*/-->
+
+</body>
+</html>

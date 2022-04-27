@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>programmer.lp</groupId>
+    <artifactId>SpringBoot-HelloWorld</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- 继承父项目，里面包含了各种库的版本号 -->
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.6.0</version>
+    </parent>
+
+    <!-- 依赖 -->
+    <dependencies>
+        <!-- web项目的依赖（已经集成了SpringMVC中很多的常用库） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 热部署：DEBUG模式下，它可以监控classpath的变化，从而自动部署项目 -->
+        <!-- 需要build module / build project -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- 插件 -->
+    <build>
+        <!-- 生成的可运行jar包名 -->
+        <finalName>sb_hw</finalName>
+        <plugins>
+            <!-- 用于打包生成可运行jar包 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

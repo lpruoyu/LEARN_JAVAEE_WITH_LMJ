@@ -1,0 +1,9 @@
+# 默认配置，如果不想修改的话，不用配
+#spring:
+#  thymeleaf:
+#    encoding: utf-8
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    enabled: true
+#    servlet:
+#      content-type: text/html

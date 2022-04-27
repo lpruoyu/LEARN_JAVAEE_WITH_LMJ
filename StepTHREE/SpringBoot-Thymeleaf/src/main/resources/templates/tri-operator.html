@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tri-operator</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<!----------三目运算符------------>
+<div th:text="${age} ? '存在age' : '不存在age'"></div>
+<div th:text="${age != null} ? '存在age' : '不存在age'"></div>
+<div th:text="${age == null} ? '不存在age' : '存在age'"></div>
+
+<hr>
+
+<div th:text="${age} ?: 18"></div>
+<!-- 相当于： -->
+<!-- ${age} ? ${age} : 18 -->
+<!-- ${age == null} ? 18 : ${age} -->
+<!-- ${age != null} ? ${age} : 18 -->
+<!-- 也就是 -->
+<!--<div th:text="${age} ? ${age} : 18"></div>-->
+<!--<div th:text="${age == null} ? 18 : ${age}"></div>-->
+<!--<div th:text="${age != null} ? ${age} : 18"></div>-->
+
+<hr>
+
+<!-- ${name == null} ? 'lpruoyu' : null -->
+<div th:text="${name == null} ? 'lpruoyu'"></div>
+
+<hr>
+
+<div th:class="${name == 'lp'} ? 'blue' : 'red'">
+    div666
+</div>
+
+</body>
+</html>

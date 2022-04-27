@@ -23,7 +23,6 @@
                         </span>
                     <div class="form-line">
                         <input type="email"
-                        <%--                               value="lpruoyu@foxmail.com" --%>
                                class="form-control" name="email" maxlength="50" placeholder="邮箱" required
                                autofocus>
                     </div>
@@ -35,7 +34,6 @@
                     <div class="form-line">
                         <input type="text" style="display: none" name="password">
                         <input type="password"
-                        <%--                               value="123"--%>
                                class="form-control"
                                id="originalPassword" maxlength="20"
                                placeholder="密码"
@@ -90,7 +88,7 @@
         $('[name=password]').val(md5($('#originalPassword').val()))
 
         // 先弹框
-        // 利用该弹框，既能组织用户多次点击登录发送异步请求，又能提升用户体验
+        // 利用该弹框，既能阻止用户多次点击登录发送异步请求，又能提升用户体验
         swal({
             title: '正在登录中...',
             text: ' ',

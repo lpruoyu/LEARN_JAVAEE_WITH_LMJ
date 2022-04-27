@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>link-expression</title>
+</head>
+<body>
+
+<div>
+    <a href="/leaf/literal">literal</a>
+    <a href="/leaf/i18n">i18n</a>
+</div>
+
+<hr>
+
+<div>
+    <a th:href="@{/literal}">literal</a>
+    <a th:href="@{/i18n}">i18n</a>
+</div>
+
+<hr>
+<!-- 传递参数 -->
+<div>
+    <a th:href="@{/literal(id=10, name='lp')}">literal</a>
+    <a th:href="@{/i18n/{no}/front(no=10)}">i18n</a>
+</div>
+
+<hr>
+
+
+<div th:switch="'lpruoyu'">
+    <div th:case="'lp'" th:text="'lp is a programmer!'"></div>
+    <div th:case="*" th:text="'other'"></div>
+</div>
+
+<div th:with="age=40" th:switch="${age}">
+    <div th:case="40">40岁了</div>
+    <div th:case="*">not 40</div>
+</div>
+
+<!-- 使用switch-case模仿if-else -->
+<div th:with="age=44" th:switch="40 > ${age}">
+    <div th:case="true">年龄小于40岁</div>
+    <div th:case="*">年龄大于40岁</div>
+</div>
+
+<!-- 使用if、unless模仿if-else -->
+<div th:if="${age} > 20">年龄大于20岁</div>
+<div th:unless="${age} > 20">年龄不大于20岁</div>
+
+</body>
+</html>

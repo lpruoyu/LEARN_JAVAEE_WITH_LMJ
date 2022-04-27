@@ -1,0 +1,7 @@
+# 公共配置
+spring:
+  profiles:
+    active:
+      - development
+      - port
+      - ctx

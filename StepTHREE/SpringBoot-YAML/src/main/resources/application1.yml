@@ -1,0 +1,10 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /yml
+
+#name: lp
+name: "lp\truoyu"
+
+id: 10
+age: 22

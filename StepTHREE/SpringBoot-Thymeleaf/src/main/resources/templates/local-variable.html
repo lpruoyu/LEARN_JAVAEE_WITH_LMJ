@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>local-variable</title>
+</head>
+<body>
+
+<!----------局部变量------------>
+<div th:with="id=10, salary=200, nickName='lp'">
+    <div th:text="'id = ' + ${id}"></div>
+    <div th:text="|salary = ${salary}|"></div>
+    <div th:text="${nickName}"></div>
+
+    <div th:text="${id} + ${age}"></div>
+</div>
+
+</body>
+</html>

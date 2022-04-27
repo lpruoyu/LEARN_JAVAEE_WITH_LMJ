@@ -1,0 +1,7 @@
+spring:
+  messages:
+    # 关闭参考操作系统语言
+    # 因为我们的JavaWEB程序应该参考浏览器的语言
+    fallback-to-system-locale: false
+    # 默认：basename: messages
+    basename: i18n.messages

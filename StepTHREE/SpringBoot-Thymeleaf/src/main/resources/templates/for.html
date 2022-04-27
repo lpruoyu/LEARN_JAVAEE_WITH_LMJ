@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.name}"></td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>row</th>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person, status : ${persons}">
+        <td th:text="${status}"></td>
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.name}"></td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>row</th>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person, status : ${persons}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.name}"></td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>row</th>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person, status : ${persons}">
+        <td th:text="${status.index}"></td>
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.name}"></td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <tr>
+        <th>even</th>
+        <th>odd</th>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person, status : ${persons}">
+        <!-- even代表偶数， odd代表奇数 -->
+        <td th:text="${status.even}"></td>
+        <td th:text="${status.odd}"></td>
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.name}"></td>
+    </tr>
+</table>
+
+
+<hr>
+
+<table>
+    <tr>
+        <th>row</th>
+        <th>age</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="person, status : ${persons}" th:object="${person}">
+        <td th:text="${status.index}"></td>
+        <td th:text="*{age + 10}"></td>
+        <td th:text="*{name}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

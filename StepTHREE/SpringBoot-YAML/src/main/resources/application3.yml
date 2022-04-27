@@ -1,0 +1,21 @@
+person:
+  id: 1
+  name: lpruoyu
+  nick-names: [ lp1, ruoyu1, lpx1 ]
+  dog:
+    age: 10
+    name: hz
+  dogs:
+    - age: 10
+      name: hz1
+    - age: 11
+      name: hz2
+  hobbies:
+    - childhood: run
+    - youth: basketball
+    - manhood: infinity
+#  hobbies: {
+#    childhood: run,
+#    youth: basketball,
+#    manhood: infinity
+#  }

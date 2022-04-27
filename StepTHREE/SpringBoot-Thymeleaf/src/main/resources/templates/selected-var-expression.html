@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>selected-var-expression</title>
+</head>
+<body>
+
+<div>
+    <div th:text="${person.name}"></div>
+    <div th:text="${person.age}"></div>
+</div>
+<div>
+    <div th:text="*{person.name}"></div>
+    <div th:text="*{person.age}"></div>
+</div>
+
+<hr>
+
+<div th:object="${person}">
+    <div th:text="*{name}"></div>
+    <div th:text="*{age}"></div>
+</div>
+
+<hr>
+
+<div th:object="${person}">
+    <div th:text="*{#object.name}"></div>
+    <div th:text="${#object.age}"></div>
+</div>
+
+</body>
+</html>

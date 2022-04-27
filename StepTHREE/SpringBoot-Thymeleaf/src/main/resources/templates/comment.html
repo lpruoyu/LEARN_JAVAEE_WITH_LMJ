@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>comment</title>
+</head>
+<body>
+
+<!--<div>HTML注释：无论是静态打开，还是通过解析器解析后转发打开，被注释的内容都不会显示</div>-->
+
+<!--/*-->
+<div>解析器级别注释：静态打开，不算注释；通过解析器解析后转发打开，算注释，被注释的内容不会显示</div>
+<!--*/-->
+
+<!--/*/
+<div>原型注释：静态打开，算注释，被注释的内容不会显示；通过解析器解析后转发打开，不算注释</div>
+/*/-->
+
+</body>
+</html>

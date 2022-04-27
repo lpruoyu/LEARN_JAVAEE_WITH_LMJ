@@ -1,0 +1,6 @@
+# 上线环境
+jdbc:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/lp_resume?useSSL=false
+  username: root
+  password: root

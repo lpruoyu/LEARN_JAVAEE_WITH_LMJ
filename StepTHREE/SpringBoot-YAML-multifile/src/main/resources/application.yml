@@ -1,0 +1,11 @@
+# 公共配置
+spring:
+  profiles:
+    active:
+      - development
+      - port
+      - ctx
+  banner:
+    location: banner5.txt
+#    active: development, port, ctx
+#    active: [development, port, ctx]

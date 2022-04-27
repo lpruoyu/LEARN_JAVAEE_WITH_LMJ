@@ -1,0 +1,10 @@
+person:
+  id: 1
+  age: 22
+  name: lpruoyu
+  nick-names:
+    - lp2
+    - ruoyu2
+    - lpx2
+#  nick-names: [lp1, ruoyu1, lpx1]
+#  nick-names: lp, ruoyu, lpx

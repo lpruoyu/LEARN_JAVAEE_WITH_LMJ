@@ -1,0 +1,31 @@
+# 公共配置
+
+spring:
+  profiles:
+    active: development
+server:
+  port: 8888
+  servlet:
+    context-path: /yml
+
+---
+
+# 开发环境
+spring:
+  profiles: development
+jdbc:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/test_mybatis?useSSL=false
+  username: employee01
+  password: employee01
+
+---
+
+# 上线环境
+spring:
+  profiles: production
+jdbc:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/lp_resume?useSSL=false
+  username: root
+  password: root

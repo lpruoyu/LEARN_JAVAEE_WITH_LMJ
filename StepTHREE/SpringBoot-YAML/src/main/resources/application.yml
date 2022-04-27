@@ -1,0 +1,19 @@
+person:
+  id: 1
+  name: lpruoyu
+  nick-names:
+    - lp
+    - ruoyu
+    - lpx
+  dog:
+    age: 10
+    name: hz
+  dogs:
+    - age: 10
+      name: hz
+    - age: 11
+      name: hz
+  hobbies:
+    - childhood: run
+    - youth: basketball
+    - manhood: infinity
