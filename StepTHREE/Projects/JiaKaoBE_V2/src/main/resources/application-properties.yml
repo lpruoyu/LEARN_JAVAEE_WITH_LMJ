@@ -1,0 +1,9 @@
+cors:
+  path-pattern: /**
+  methods:
+    - GET
+    - POST
+  origins:
+    - http://localhost:63342
+    - http://localhost:63343
+  allow-credentials: true

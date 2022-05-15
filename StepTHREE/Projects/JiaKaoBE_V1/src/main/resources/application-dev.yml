@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///jk?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf-8

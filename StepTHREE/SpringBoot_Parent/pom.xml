@@ -15,7 +15,7 @@
 <!--        <module>../SpringBoot-JSP</module>-->
 <!--        <module>../SpringBoot-Thymeleaf</module>-->
 <!--        <module>../SpringBoot-MyBatis</module>-->
-        <module>../SpringBoot-SpringMVC</module>
+<!--        <module>../SpringBoot-SpringMVC</module>-->
     </modules>
 
     <parent>

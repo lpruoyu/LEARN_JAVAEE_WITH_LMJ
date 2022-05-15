@@ -1,0 +1,18 @@
+server:
+  servlet:
+    context-path: /jk
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///jiakao?serverTimezone=Asia/Shanghai&useSSL=false
+mybatis-plus:
+  type-aliases-package: programmer.lp.jk.pojo
+  # mapper-locations的默认配置
+  mapper-locations: classpath*:/mapper/**/*.xml
+logging:
+  level:
+    programmer.lp.jk.mapper: debug
+#    root: debug

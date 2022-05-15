@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+This is springmvc's index.html
+
+<div>
+    <form th:action="@{/test/fileUpload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+<a th:href="@{/test.txt}">访问test.txt文件</a>
+<a th:href="@{/download}">以附件的形式下载test.txt文件</a>
+
+<button type="button" id="btn-add">添加</button>
+
+<!--<script th:src="@{/webjars/jquery/3.5.1/jquery.js}"></script>-->
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<script>
+    $('#btn-add').click(() => {
+        alert('点击了添加')
+    })
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div>This is success.jsp!</div>
+<div>登录成功</div>
 
 </body>
 </html>

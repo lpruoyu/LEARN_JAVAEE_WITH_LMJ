@@ -3,3 +3,8 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+server:
+  servlet:
+    jsp:
+      init-parameters:
+        - development: true

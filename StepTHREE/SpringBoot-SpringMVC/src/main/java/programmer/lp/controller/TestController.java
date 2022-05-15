@@ -64,4 +64,10 @@ public class TestController {
         }
     }
 
+    @GetMapping("/requestParam")
+    public String requestParam(String name) {
+        System.out.println(name);
+        return name;
+    }
+
 }

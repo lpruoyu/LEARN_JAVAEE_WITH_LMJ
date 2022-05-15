@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "name": "project",
+      "type": "programmer.lp.properties.ProjectProperties",
+      "sourceType": "programmer.lp.properties.ProjectProperties"
+    },
+    {
+      "name": "project.uploads",
+      "type": "programmer.lp.properties.ProjectProperties$Uploads",
+      "sourceType": "programmer.lp.properties.ProjectProperties",
+      "sourceMethod": "getUploads()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "project.uploads.base-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.properties.ProjectProperties$Uploads"
+    },
+    {
+      "name": "project.uploads.image-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.properties.ProjectProperties$Uploads"
+    },
+    {
+      "name": "project.uploads.others-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.properties.ProjectProperties$Uploads"
+    },
+    {
+      "name": "project.uploads.video-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.properties.ProjectProperties$Uploads"
+    }
+  ],
+  "hints": []
+}

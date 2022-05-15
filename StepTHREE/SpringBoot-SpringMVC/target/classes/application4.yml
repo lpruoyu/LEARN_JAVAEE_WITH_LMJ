@@ -1,0 +1,28 @@
+server:
+  servlet:
+    context-path: "/springmvc"
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 0
+    format:
+      #      默认
+      #      date: dd/MM/yyyy
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+    static-path-pattern: /**
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+        - file:///${project.uploads.base-path}
+project:
+  uploads:
+    base-path: D:/uploads/
+    image-path: image/
+    video-path: video/
+    others-path: others/
