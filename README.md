@@ -1,6 +1,10 @@
 ## LEARN_JAVAEE_WITH_LMJ
 ## 小码哥Java从零到架构师学习
-## CSDN记录：https://blog.csdn.net/weixin_44018671/category_11315146.html
+## CSDN记录：
+
+#### https://blog.csdn.net/weixin_44018671/category_11315146.html
+
+#### https://blog.csdn.net/weixin_44018671/article/details/121025599
 
 -------
 
