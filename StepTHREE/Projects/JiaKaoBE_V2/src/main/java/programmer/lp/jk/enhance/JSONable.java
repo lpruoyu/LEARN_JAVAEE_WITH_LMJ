@@ -1,11 +1,9 @@
 package programmer.lp.jk.enhance;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import programmer.lp.jk.util.JSONs;
 
 public interface JSONable {
-    ObjectMapper MAPPER = new ObjectMapper();
-
-    default String json() throws Exception {
-        return MAPPER.writeValueAsString(this);
+    default String jsonString() throws Exception {
+        return JSONs.getMAPPER().writeValueAsString(this);
     }
 }

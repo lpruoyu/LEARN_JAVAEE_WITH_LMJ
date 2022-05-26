@@ -1,7 +1,5 @@
 package programmer.lp.jk.pojo.result;
 
-import programmer.lp.jk.util.Rs;
-
 public enum CodeMsg {
     BAD_REQUEST(400, "请求出错"),
     UNAUTHORIZED(401, "未授权"),
@@ -9,9 +7,9 @@ public enum CodeMsg {
     NOT_FOUND(404, "资源不存在"),
     INTERNAL_SERVER_ERROR(500, "服务器内部错误"),
 
-    OPERATE_OK(Rs.CODE_SUCCESS, "操作成功"),
-    SAVE_OK(Rs.CODE_SUCCESS, "保存成功"),
-    REMOVE_OK(Rs.CODE_SUCCESS, "删除成功"),
+    OPERATE_OK(R.CODE_SUCCESS, "操作成功"),
+    SAVE_OK(R.CODE_SUCCESS, "保存成功"),
+    REMOVE_OK(R.CODE_SUCCESS, "删除成功"),
 
     OPERATE_ERROR(40001, "操作失败"),
     SAVE_ERROR(40002, "保存失败"),

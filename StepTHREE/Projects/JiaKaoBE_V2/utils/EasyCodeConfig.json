@@ -28,12 +28,12 @@
         {
           "matchType": "REGEX",
           "columnType": "decimal(\\(\\d+,\\d+\\))?",
-          "javaType": "java.lang.Double"
+          "javaType": "java.math.BigDecimal"
         },
         {
           "matchType": "REGEX",
           "columnType": "decimal(\\(\\d+\\))?",
-          "javaType": "java.lang.Double"
+          "javaType": "java.math.BigDecimal"
         },
         {
           "matchType": "ORDINARY",
@@ -129,7 +129,7 @@
       "elementList": [
         {
           "name": "controller.java.vm",
-          "code": "##导入宏定义\n$!{define.vm}\n\n##设置表后缀（宏定义）\n#setTableSuffix(\"Controller\")\n\n##保存文件（宏定义）\n#save(\"/controller\", \"Controller.java\")\n\n##定义服务名\n#set($serviceName = $!tool.append($!tool.firstLowerCase($!tableInfo.name), \"Service\"))\n\n##定义实体对象名\n#set($entityName = $!tool.firstLowerCase($!tableInfo.name))\n\n##包路径（宏定义）\n#setPackageSuffix(\"controller\")\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.web.bind.annotation.RestController;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport programmer.lp.jk.service.$!{tableInfo.name}Service;\n\n@RestController\n@RequestMapping(\"/$!tool.firstLowerCase($!tableInfo.name)s\")\npublic class $!{tableName} {\n    @Autowired\n    private $!{tableInfo.name}Service service;\n    \n}\n"
+          "code": "##导入宏定义\n$!{define.vm}\n\n##设置表后缀（宏定义）\n#setTableSuffix(\"Controller\")\n\n##保存文件（宏定义）\n#save(\"/controller\", \"Controller.java\")\n\n##定义服务名\n#set($serviceName = $!tool.append($!tool.firstLowerCase($!tableInfo.name), \"Service\"))\n\n##定义实体对象名\n#set($entityName = $!tool.firstLowerCase($!tableInfo.name))\n\n##包路径（宏定义）\n#setPackageSuffix(\"controller\")\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.web.bind.annotation.RestController;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport programmer.lp.jk.service.$!{tableInfo.name}Service;\n\n@RestController\n@RequestMapping(\"/$!tool.firstLowerCase($!tableInfo.name)s\")\npublic class $!{tableName} extends BaseController<$!{tableInfo.name}> {\n    @Autowired\n    private $!{tableInfo.name}Service service;\n    \n    @Override\n    protected IService<$!{tableInfo.name}> service() {\n        return service;\n    }\n}\n"
         },
         {
           "name": "dao.java.vm",
@@ -145,7 +145,7 @@
         },
         {
           "name": "serviceImpl.java.vm",
-          "code": "##导入宏定义\n$!{define.vm}\n\n##设置表后缀（宏定义）\n#setTableSuffix(\"ServiceImpl\")\n\n##保存文件（宏定义）\n#save(\"/service/impl\", \"ServiceImpl.java\")\n\n##包路径（宏定义）\n#setPackageSuffix(\"service.impl\")\n\nimport com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\nimport org.springframework.stereotype.Service;\nimport org.springframework.transaction.annotation.Transactional;\nimport $!{tableInfo.savePackageName}.mapper.$!{tableInfo.name}Mapper;\nimport $!{tableInfo.savePackageName}.pojo.po.$!{tableInfo.name};\nimport $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;\n\n@Transactional\n@Service(\"$!tool.firstLowerCase($tableInfo.name)Service\")\npublic class $!{tableName} extends ServiceImpl<$!{tableInfo.name}Mapper, $!{tableInfo.name}> implements $!{tableInfo.name}Service {\n\n}\n"
+          "code": "##导入宏定义\n$!{define.vm}\n\n##设置表后缀（宏定义）\n#setTableSuffix(\"ServiceImpl\")\n\n##保存文件（宏定义）\n#save(\"/service/impl\", \"ServiceImpl.java\")\n\n##包路径（宏定义）\n#setPackageSuffix(\"service.impl\")\n\nimport com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\nimport org.springframework.stereotype.Service;\nimport org.springframework.transaction.annotation.Transactional;\nimport $!{tableInfo.savePackageName}.mapper.$!{tableInfo.name}Mapper;\nimport $!{tableInfo.savePackageName}.pojo.po.$!{tableInfo.name};\nimport $!{tableInfo.savePackageName}.service.$!{tableInfo.name}Service;\n\n@Transactional\n@Service\npublic class $!{tableName} extends ServiceImpl<$!{tableInfo.name}Mapper, $!{tableInfo.name}> implements $!{tableInfo.name}Service {\n\n}\n"
         }
       ]
     }

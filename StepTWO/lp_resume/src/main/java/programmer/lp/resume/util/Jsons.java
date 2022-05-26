@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.text.SimpleDateFormat;
 
-public class Jsons {
+public final class Jsons {
+
+    private Jsons() {}
 
     // TODO 写入博客 fasterxml jackson
     /* 配置JSON解析Date格式 */

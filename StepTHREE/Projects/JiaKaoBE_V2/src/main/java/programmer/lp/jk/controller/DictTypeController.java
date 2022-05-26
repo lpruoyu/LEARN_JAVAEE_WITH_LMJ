@@ -18,7 +18,7 @@ public class DictTypeController extends BaseController<DictType> {
     @Autowired
     private DictTypeService service;
 
-    @GetMapping("/list")
+    @GetMapping
     public R list(DictTypeQuery query) {
         service.list(query);
         return Rs.success(query).add(Rs.K_COUNT, query.getTotal());

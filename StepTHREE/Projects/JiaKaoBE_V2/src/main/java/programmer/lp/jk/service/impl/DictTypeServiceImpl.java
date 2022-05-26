@@ -14,6 +14,7 @@ import programmer.lp.jk.service.DictTypeService;
 @Service
 public class DictTypeServiceImpl extends ServiceImpl<DictTypeMapper, DictType> implements DictTypeService {
     @Override
+    @Transactional(readOnly = true)
     public void list(DictTypeQuery query) {
         MPQueryWrapper<DictType> wrapper = new MPQueryWrapper<>();
         wrapper.like(query.getKeyword(), DictType::getName, DictType::getValue, DictType::getIntro);

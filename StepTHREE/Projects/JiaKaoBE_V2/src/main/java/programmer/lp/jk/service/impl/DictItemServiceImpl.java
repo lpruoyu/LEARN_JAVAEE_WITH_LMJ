@@ -14,6 +14,7 @@ import programmer.lp.jk.service.DictItemService;
 @Service
 public class DictItemServiceImpl extends ServiceImpl<DictItemMapper, DictItem> implements DictItemService {
     @Override
+    @Transactional(readOnly = true)
     public void list(DictItemQuery query) {
         MPQueryWrapper<DictItem> wrapper = new MPQueryWrapper<>();
         wrapper.like(query.getKeyword(), DictItem::getName, DictItem::getValue);
@@ -25,4 +26,3 @@ public class DictItemServiceImpl extends ServiceImpl<DictItemMapper, DictItem> i
         baseMapper.selectPage(new MPPage<>(query), wrapper);
     }
 }
-

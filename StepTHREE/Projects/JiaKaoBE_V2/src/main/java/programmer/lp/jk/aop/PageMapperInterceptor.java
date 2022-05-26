@@ -10,9 +10,15 @@ import programmer.lp.jk.enhance.MPPage;
 @Component
 public class PageMapperInterceptor {
     @Around("execution(public com.baomidou.mybatisplus.core.metadata.IPage com.baomidou.mybatisplus.core.mapper.BaseMapper.selectPage(com.baomidou.mybatisplus.core.metadata.IPage, com.baomidou.mybatisplus.core.conditions.Wrapper))")
-    public Object log(ProceedingJoinPoint point) throws Throwable {
+    public Object updateQuery(ProceedingJoinPoint point) throws Throwable {
         Object result = point.proceed();
-        ((MPPage) point.getArgs()[0]).updateQuery();
+        final Object[] args = point.getArgs();
+        if (args != null && args.length > 0) {
+            Object arg = args[0];
+            if (arg instanceof MPPage) {
+                ((MPPage<?>) arg).updateQuery();
+            }
+        }
         return result;
     }
 }

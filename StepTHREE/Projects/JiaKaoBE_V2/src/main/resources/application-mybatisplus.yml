@@ -1,0 +1,5 @@
+mybatis-plus:
+  type-aliases-package: programmer.lp.jk.pojo
+  global-config:
+    db-config:
+      id-type: auto # 主键自增

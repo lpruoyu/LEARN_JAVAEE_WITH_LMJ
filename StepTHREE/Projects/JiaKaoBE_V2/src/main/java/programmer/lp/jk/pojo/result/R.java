@@ -5,6 +5,8 @@ import programmer.lp.jk.enhance.JSONable;
 import java.util.HashMap;
 
 public class R extends HashMap<String, Object> implements JSONable {
+    public static final int CODE_SUCCESS = 0;
+
     private static final String K_CODE = "code";
     private static final String K_MSG = "msg";
     private static final String K_DATA = "data";
