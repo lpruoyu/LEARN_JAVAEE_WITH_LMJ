@@ -504,7 +504,7 @@ class Table extends Module {
         if (this._cfg.page !== false) { // 如果需要分页
             $.extend(cfg, {
                 limits: [5, 10, 20, 50, 75, 100],
-                limit: 10,
+                limit: 5,
                 page: true,
                 request: {
                     limitName: 'size'

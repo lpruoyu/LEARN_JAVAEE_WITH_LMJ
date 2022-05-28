@@ -1,0 +1,19 @@
+cors:
+  path-pattern: /**
+  methods:
+    - GET
+    - POST
+  origins:
+    - http://localhost:63342
+    - http://localhost:63343
+  allow-credentials: true
+swagger:
+  email: xxxx@foxmail.com
+  ignored-parameter-types:
+    - javax.servlet.http.HttpSession
+    - javax.servlet.http.HttpServletRequest
+    - javax.servlet.http.HttpServletResponse
+  name: lpruoyu
+  url: https://blog.csdn.net/weixin_44018671
+  version: 1.0.0
+  title: LP驾考

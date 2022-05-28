@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active:
+      - dev
+      - properties
+      - mybatisplus
+  jackson:
+    default-property-inclusion: non_null
+logging:
+  level:
+    programmer.lp.jk.mapper: debug

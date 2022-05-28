@@ -1,0 +1,11 @@
+server:
+  servlet:
+    context-path: /jk
+  port: 8080
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///jk?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
