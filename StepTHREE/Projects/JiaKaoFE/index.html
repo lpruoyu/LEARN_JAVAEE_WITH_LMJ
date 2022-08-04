@@ -129,6 +129,9 @@
                     Layers.msgSuccess('退出登录成功', () => {
                         location.href = 'page/login.html'
                     })
+                },
+                error: () => {
+                    location.href = 'page/login.html'
                 }
             })
         })

@@ -27,7 +27,7 @@
         <div class="layui-form login-form">
             <form class="layui-form" id="login-form" lay-filter="login-form">
                 <div class="layui-form-item logo-title">
-                    <h1>小码哥驾考后台登录</h1>
+                    <h1>LP驾考后台登录</h1>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username"></label>
@@ -77,14 +77,12 @@
                 data: data.field,
                 success: (response) => {
                     Datas.save(DataKey.USER, response.data)
-
                     location.href = '../index.html'
                 },
                 xhrFields: { // 需要跨域带上cookie
                     withCredentials: true
                 }
             })
-
             return false
         })
     })

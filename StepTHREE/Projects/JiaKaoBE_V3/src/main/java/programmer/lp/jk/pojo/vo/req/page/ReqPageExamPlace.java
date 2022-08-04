@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ReqPageExamPlace extends ReqKeywordPage {
+public class ReqPageExamPlace extends ReqPageKeyword {
     @ApiModelProperty("考场所属的省份id")
     private Integer provinceId;
     @ApiModelProperty("考场所属的城市id")

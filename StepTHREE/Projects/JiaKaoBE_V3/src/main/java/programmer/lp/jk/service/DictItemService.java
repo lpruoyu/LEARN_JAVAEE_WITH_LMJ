@@ -9,4 +9,3 @@ import programmer.lp.jk.pojo.vo.resp.json.JSONPageResult;
 public interface DictItemService extends IService<DictItem> {
     JSONPageResult<RespDictItem> list(ReqPageDictItem reqPage);
 }
-

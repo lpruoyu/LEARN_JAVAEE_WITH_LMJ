@@ -5,18 +5,48 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Main {
+    public static void main(String[] args) {
+        for (int i = 48; i <= 82; i++) {
+            try {
+                Document doc = Jsoup.connect("http://localhost:8080/hello_world/page/html/" + i + ".html").get();
+                final Element element = doc.selectFirst(".messagecontent");
+                StringBuilder sb = new StringBuilder();
+                sb.append(element.select("p").text()).append("\n");
+                copyToFile(sb.toString(), String.valueOf(i));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void copyToFile(String content, String fileName) {
+        File file = new File("C:\\Users\\lpruoyu\\Desktop\\html\\" + fileName + ".txt");
+        Writer writer = null;
+        try {
+            writer = new FileWriter(file);
+            writer.write(content);
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(5);
 
-    public static void main(String[] args) throws Exception {
+    public static void main1(String[] args) throws Exception {
         try {
             Document doc = Jsoup.connect("https://ext.se.360.cn/webstore/category").get();
             Elements appWraps = doc.select(".appwrap");

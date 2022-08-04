@@ -1,13 +1,13 @@
 package programmer.lp.jk.pojo.po;
 
 import lombok.Data;
-import programmer.lp.jk.foreign.anno.ForeignField;
+import programmer.lp.jk.common.foreign.anno.ForeignField;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class ExamPlaceCourse { // 科2科3
+public class ExamPlaceCourse { // 课程—科2科3
     // 主键
     private Integer id;
     // 创建时间，系统自动生成

@@ -2,7 +2,7 @@ package programmer.lp.jk.pojo.vo.req.save;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import programmer.lp.jk.validator.BoolNumber;
+import programmer.lp.jk.common.validator.BoolNumber;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;

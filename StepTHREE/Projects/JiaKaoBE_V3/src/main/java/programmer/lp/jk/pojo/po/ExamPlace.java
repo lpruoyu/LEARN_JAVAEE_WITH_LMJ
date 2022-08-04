@@ -1,7 +1,7 @@
 package programmer.lp.jk.pojo.po;
 
 import lombok.Data;
-import programmer.lp.jk.foreign.anno.ForeignField;
+import programmer.lp.jk.common.foreign.anno.ForeignField;
 
 @Data
 public class ExamPlace {

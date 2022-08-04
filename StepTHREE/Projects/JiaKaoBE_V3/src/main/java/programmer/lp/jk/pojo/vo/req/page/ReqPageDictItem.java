@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ReqPageDictItem extends ReqKeywordPage{
+public class ReqPageDictItem extends ReqPageKeyword {
     @ApiModelProperty("数据字典类型ID")
     private Integer typeId;
 }

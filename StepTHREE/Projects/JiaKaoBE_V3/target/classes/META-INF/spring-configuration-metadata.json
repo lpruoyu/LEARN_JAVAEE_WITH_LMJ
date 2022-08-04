@@ -1,0 +1,98 @@
+{
+  "groups": [
+    {
+      "name": "cors",
+      "type": "programmer.lp.jk.common.properties.CORSProperties",
+      "sourceType": "programmer.lp.jk.common.properties.CORSProperties"
+    },
+    {
+      "name": "fileupload",
+      "type": "programmer.lp.jk.common.properties.FileUploadProperties",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "fileupload.properties",
+      "type": "programmer.lp.jk.common.properties.FileUploadProperties",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "swagger",
+      "type": "programmer.lp.jk.common.properties.SwaggerProperties",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cors.allow-credentials",
+      "type": "java.lang.Boolean",
+      "sourceType": "programmer.lp.jk.common.properties.CORSProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "cors.methods",
+      "type": "java.lang.String[]",
+      "sourceType": "programmer.lp.jk.common.properties.CORSProperties"
+    },
+    {
+      "name": "cors.origins",
+      "type": "java.lang.String[]",
+      "sourceType": "programmer.lp.jk.common.properties.CORSProperties"
+    },
+    {
+      "name": "cors.path-pattern",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.CORSProperties"
+    },
+    {
+      "name": "fileupload.base-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "fileupload.image-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "fileupload.upload-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "fileupload.video-path",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.FileUploadProperties"
+    },
+    {
+      "name": "swagger.email",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    },
+    {
+      "name": "swagger.ignored-parameter-types",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    },
+    {
+      "name": "swagger.name",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    },
+    {
+      "name": "swagger.title",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    },
+    {
+      "name": "swagger.url",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    },
+    {
+      "name": "swagger.version",
+      "type": "java.lang.String",
+      "sourceType": "programmer.lp.jk.common.properties.SwaggerProperties"
+    }
+  ],
+  "hints": []
+}

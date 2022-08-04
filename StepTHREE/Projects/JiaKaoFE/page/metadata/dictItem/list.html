@@ -14,8 +14,6 @@
                     </div>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-<!--                            <select name="typeId" lay-search lay-filter="typeId">-->
-<!--                            </select>-->
                             <select name="typeId" lay-search>
                             </select>
                         </div>
@@ -24,14 +22,12 @@
                         <button type="button"
                                 id="reset-btn"
                                 class="layui-btn layui-btn-warm">
-                            <i class="layui-icon layui-icon-refresh"></i> 重 置
-                        </button>
+                            <i class="layui-icon layui-icon-refresh"></i> 重 置 </button>
                         <button type="submit"
                                 id="search-btn"
                                 class="layui-btn layui-btn-normal"
                                 lay-submit lay-filter="search-btn">
-                            <i class="layui-icon layui-icon-search"></i> 搜 索
-                        </button>
+                            <i class="layui-icon layui-icon-search"></i> 搜 索 </button>
                     </div>
                 </div>
             </form>
@@ -42,11 +38,9 @@
         <script type="text/html" id="data-toolbar">
             <div class="layui-btn-container">
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn"
-                        lay-event="add" id="add-btn"> 添加
-                </button>
+                        lay-event="add" id="add-btn"> 添加 </button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn layui-btn-disabled"
-                        lay-event="remove" id="remove-btn"> 删除
-                </button>
+                        lay-event="remove" id="remove-btn"> 删除 </button>
             </div>
         </script>
 
@@ -70,8 +64,7 @@
                     {field: 'name', title: '名称', align: 'center'},
                     {field: 'value', title: '值', align: 'center'},
                     {field: 'sn', title: '序号', align: 'center'},
-                    {
-                        field: 'disabled', title: '启用', align: 'center',
+                    {field: 'disabled', title: '启用', align: 'center',
                         templet: (d) => {
                             const status = d.disabled ? '' : 'checked'
                             return `<input type="checkbox" lay-text="启用|禁用" disabled lay-skin="switch" ${status}>`
@@ -118,10 +111,7 @@
             // 初始化下拉控件
             const select = new Select({
                 name: 'typeId',
-                form/*,
-                change: (o) => { // 监听下拉框的点击事件
-                    console.log(o)
-                }*/
+                form
             })
 
             // 处理数据

@@ -3,7 +3,7 @@ package programmer.lp.jk.pojo.vo.resp.json;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import programmer.lp.jk.util.CodeMsg;
+import programmer.lp.jk.common.enhance.CodeMsg;
 
 @Data
 @ApiModel("返回结果")
@@ -12,6 +12,10 @@ public class JSONResult {
     private Integer code;
     @ApiModelProperty("返回的信息")
     private String msg;
+
+    public JSONResult() {
+        this(CodeMsg.OPERATE_OK);
+    }
 
     public JSONResult(Integer code, String msg) {
         this.code = code;
@@ -25,10 +29,6 @@ public class JSONResult {
 
     public JSONResult(Integer code) {
         this.code = code;
-    }
-
-    public JSONResult() {
-        this(0);
     }
 
     public JSONResult(CodeMsg codeMsg) {

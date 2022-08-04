@@ -186,6 +186,7 @@ public class UserServlet extends BaseServlet<User> {
 
         // 将生成的验证码转为小写存入Session中
         request.getSession().setAttribute("captcha", code.toLowerCase());
+
         // 生成验证码图片
         BufferedImage image = dk.createImage(code);
 

@@ -503,8 +503,8 @@ class Table extends Module {
 
         if (this._cfg.page !== false) { // 如果需要分页
             $.extend(cfg, {
-                limits: [5, 10, 20, 50, 75, 100],
-                limit: 5,
+                limits: [10, 20, 50, 100],
+                limit: 10,
                 page: true,
                 request: {
                     limitName: 'size'
@@ -534,7 +534,7 @@ class TreeTable extends Table {
     }
 
     _commonCfg() {
-        return {
+        return  {
             defaultToolbar: ['filter', 'exports', 'print'],
             done: (res) => {
                 this._data = res
@@ -894,7 +894,7 @@ class FileInput extends Module {
     }
 
     _initEvent() {
-        this._$input.on('filebeforedelete', function (event, key, data) { // 删除预览图片之前
+        this._$input.on('filebeforedelete', function(event, key, data) { // 删除预览图片之前
             return new Promise((resolve, reject) => {
                 Layers.confirm('确定要删除这个文件？', (idx) => {
                     Layers.close(idx)
@@ -906,10 +906,10 @@ class FileInput extends Module {
             this._cfg.remove && this._cfg.remove(key)
         }).on('filebatchuploadsuccess', (event, data) => { // 成功批量同步上传图片
             this._cfg.batchUpload && this._cfg.batchUpload(data.response)
-            // }).on('filesuccessremove', (event, id) => {
-            //
-            // }).on('filepreremove', (event, key, index) => {
-            //
+        // }).on('filesuccessremove', (event, id) => {
+        //
+        // }).on('filepreremove', (event, key, index) => {
+        //
         })
     }
 }

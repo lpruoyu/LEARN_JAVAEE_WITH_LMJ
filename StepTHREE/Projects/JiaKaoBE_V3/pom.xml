@@ -5,6 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>programmer.lp.jkbe_v3</groupId>
     <artifactId>JiaKaoBE_V3</artifactId>
+<!--    <packaging>war</packaging>-->
+    <packaging>jar</packaging>
     <version>1.0.0</version>
 
     <parent>
@@ -17,17 +19,31 @@
         <druid.version>1.2.1</druid.version>
         <mybatis.plus.version>3.4.1</mybatis.plus.version>
         <tinypinyin.version>2.0.3</tinypinyin.version>
-        <springfox.version>3.0.0</springfox.version>
+        <mapStruct.version>1.4.1.Final</mapStruct.version>
+        <captcha.version>1.6.2</captcha.version>
+        <commons.io.version>2.11.0</commons.io.version>
         <swagger.models.version>1.6.2</swagger.models.version>
         <swagger.triui.version>1.9.6</swagger.triui.version>
         <swagger.version>2.9.2</swagger.version>
-        <map.struct.version>1.4.1.Final</map.struct.version>
+        <shiro.version>1.7.0</shiro.version>
+        <springfox.version>3.0.0</springfox.version>
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>javax.servlet</groupId>-->
+<!--            <artifactId>javax.servlet-api</artifactId>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
 
         <!-- 数据库 -->
@@ -91,14 +107,41 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>${map.struct.version}</version>
+            <version>${mapStruct.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>${map.struct.version}</version>
+            <version>${mapStruct.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- 验证码 -->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>${captcha.version}</version>
+        </dependency>
+
+        <!-- 缓存 -->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <!-- 权限控制 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-web-starter</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <!-- 文件操作 -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
         </dependency>
 
         <!-- debug阶段 -->
@@ -124,15 +167,24 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
     </dependencies>
+    <build>
+        <finalName>jk</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

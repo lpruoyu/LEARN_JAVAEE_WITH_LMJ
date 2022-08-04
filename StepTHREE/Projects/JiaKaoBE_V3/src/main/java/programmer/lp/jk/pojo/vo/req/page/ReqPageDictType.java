@@ -5,6 +5,6 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ReqPageDictType extends ReqKeywordPage {
+public class ReqPageDictType extends ReqPageKeyword {
 }
 

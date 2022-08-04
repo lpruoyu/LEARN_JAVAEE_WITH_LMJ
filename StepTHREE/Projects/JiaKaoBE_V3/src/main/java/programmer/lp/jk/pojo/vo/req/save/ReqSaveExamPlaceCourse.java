@@ -2,6 +2,8 @@ package programmer.lp.jk.pojo.vo.req.save;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+import programmer.lp.jk.common.validator.CourseType;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -23,13 +25,16 @@ public class ReqSaveExamPlaceCourse {
     @NotNull(message = "考场id不能为空")
     private Integer placeId;
     @ApiModelProperty(value = "课程类型：0是课程合集，2是科目2，3是科目3", required = true)
-    @NotNull(message = "课程类型不能为空")
+    @CourseType(message = "课程类型只能为0或2或3")
     private Short type;
     @ApiModelProperty("简介")
     private String intro;
     @ApiModelProperty("视频")
     private String video;
-    @ApiModelProperty("封面")
+
+    @ApiModelProperty("新上传的封面数据")
+    private MultipartFile coverFile;
+    @ApiModelProperty("旧封面的路径")
     private String cover;
 }
 

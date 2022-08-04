@@ -14,7 +14,7 @@
                     </div>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <select name="parentId" lay-search>
+                            <select name="parentId">
                             </select>
                         </div>
                     </div>
@@ -118,10 +118,10 @@
 
             // 设置数据
             select.data(data, (o) => {
+
                 return {
                     val: o.data.id,
                     text: o.data.plate
-                        // ? `${o.data.pinyin.slice(0,1)}-${o.data.name}-${o.data.plate}`
                         ? `【${o.data.plate}】${o.data.name}`
                         : o.data.name
                 }

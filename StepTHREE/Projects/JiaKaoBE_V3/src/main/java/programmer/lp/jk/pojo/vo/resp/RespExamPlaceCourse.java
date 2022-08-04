@@ -28,5 +28,9 @@ public class RespExamPlaceCourse {
     private String video;
     @ApiModelProperty("封面")
     private String cover;
+    @ApiModelProperty("城市id")
+    private String cityId;
+    @ApiModelProperty("省份id")
+    private String provinceId;
 }
 

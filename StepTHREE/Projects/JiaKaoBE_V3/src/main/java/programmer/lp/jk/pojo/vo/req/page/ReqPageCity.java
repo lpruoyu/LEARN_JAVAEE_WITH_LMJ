@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ReqPageCity extends ReqKeywordPage {
+public class ReqPageCity extends ReqPageKeyword {
     @ApiModelProperty("省份id")
     private Integer parentId;
 }
